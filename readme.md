@@ -6,7 +6,9 @@
 <p>G2-06_DSS_Lol$ git pull</p>
 
 **Crear/Actualizar env y database**
+<p>G2-06_DSS_Lol$ composer install</p>
 <p>G2-06_DSS_Lol$ ./init.sh</p>
+<p>Si hay error de dependecias: G2-06_DSS_Lol$ composer update</p>
 
 **Configurar identidad**
 <p>git config user.name "nombreUsuario"</p>
