@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,6 +12,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        $info = parse_ini_file("user.ini", true);
+        foreach($info as $us){
+            $user = new User([
+                'name' => $us['name'],
+                'email' => $us['email'],
+                'email_verified_at' => $us['email'],
+                'password' => $us['password'],
+                'type' => $us['type']
+            ]);
+            $user->save();
+        }
     }
 }
