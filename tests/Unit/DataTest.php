@@ -37,10 +37,10 @@ class DataTest extends TestCase
     public function testChampionData()
     {
         $count = Champion::all()->count();
-        $this->assertEquals($count, 3);
+        $this->assertEquals($count, 30);
 
         $this->assertDatabaseHas('champions', ['name' => 'Azir']);
-        $this->assertDatabaseHas('champions', ['name' => 'Olaf']);
+        $this->assertDatabaseHas('champions', ['name' => 'Fizz']);
         $this->assertDatabaseHas('champions', ['name' => 'Ashe']);
     }
 
@@ -52,11 +52,11 @@ class DataTest extends TestCase
     public function testHabilityData()
     {
         $count = Hability::all()->count();
-        $this->assertEquals($count, 3);
+        $this->assertEquals($count, 50);
 
-        $this->assertDatabaseHas('habilities', ['name' => 'Lanzar hacha']);
-        $this->assertDatabaseHas('habilities', ['name' => 'Soldados']);
-        $this->assertDatabaseHas('habilities', ['name' => 'Furia']);
+        $this->assertDatabaseHas('habilities', ['name' => 'Testarazo']);
+        $this->assertDatabaseHas('habilities', ['name' => 'Pisotear']);
+        $this->assertDatabaseHas('habilities', ['name' => 'Tormenta glacial']);
     }
 
     /**
@@ -66,16 +66,20 @@ class DataTest extends TestCase
      */
     public function testHabilitiesByChampion()
     {
-        $champion = Champion::where('name', 'Olaf')->first();
-        $this->assertEquals($champion->habilities->count(), 2);
-        $this->assertTrue($champion->habilities->contains('name', 'Lanzar hacha'));
-        $this->assertTrue($champion->habilities->contains('name', 'Furia'));
+        $champion = Champion::where('name', 'Ashe')->first();
+        $this->assertEquals($champion->habilities->count(), 5);
+        $this->assertTrue($champion->habilities->contains('name', 'Tiro congelador'));
+        $this->assertTrue($champion->habilities->contains('name', 'Flecha de cristal encantada'));
 
         $champion = Champion::where('name', 'Azir')->first();
-        $this->assertEquals($champion->habilities->count(), 1);
-        $this->assertTrue($champion->habilities->contains('name', 'Soldados'));
+        $this->assertEquals($champion->habilities->count(), 5);
+        $this->assertTrue($champion->habilities->contains('name', 'Legado de Shurima'));
+        $this->assertTrue($champion->habilities->contains('name', 'Arenas conquistadoras'));
+        $this->assertTrue($champion->habilities->contains('name', 'Alzaos'));
+        $this->assertTrue($champion->habilities->contains('name', 'Arenas movedizas'));
+        $this->assertTrue($champion->habilities->contains('name', 'Falange imperial'));
 
-        $champion = Champion::where('name', 'Ashe')->first();
+        $champion = Champion::where('name', 'Dr. Mundo')->first();
         $this->assertEquals($champion->habilities->count(), 0);
     }
 
@@ -88,12 +92,12 @@ class DataTest extends TestCase
     {
         $user = User::where('name', 'Enrique Miguel Juan Fuster')->first();
         $this->assertEquals($user->champions->count(), 2);
-        $this->assertTrue($user->champions->contains('name', 'Azir'));
-        $this->assertTrue($user->champions->contains('name', 'Ashe'));
+        $this->assertTrue($user->champions->contains('name', 'Aatrox'));
+        $this->assertTrue($user->champions->contains('name', 'Akali'));
 
         $user = User::where('name', 'Isabel Gutierrez')->first();
         $this->assertEquals($user->champions->count(), 2);
-        $this->assertTrue($user->champions->contains('name', 'Azir'));
-        $this->assertTrue($user->champions->contains('name', 'Olaf'));
+        $this->assertTrue($user->champions->contains('name', 'Aatrox'));
+        $this->assertTrue($user->champions->contains('name', 'Ahri'));
     }
 }
