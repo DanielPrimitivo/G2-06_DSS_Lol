@@ -31,4 +31,8 @@ class User extends Authenticatable
     public function champions(){
         return $this->belongsToMany('App\Champion');
     }
+
+    public function runespages(){
+        return $this->hasMany('App\RunePage');
+    }
 }
