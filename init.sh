@@ -3,3 +3,4 @@
 cp .env.example .env
 touch database/database.sqlite
 php artisan migrate:install
+php artisan key:generate
