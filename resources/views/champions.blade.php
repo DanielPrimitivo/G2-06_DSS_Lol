@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', "Campeones")
+
 @section('content')
 
 	<h1>Campeones</h1>
