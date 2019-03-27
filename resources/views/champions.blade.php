@@ -8,7 +8,9 @@
 
 	<ul>
 		@foreach ($champions as $champion)
-			<li>{{ $champion->name }}</li>
+			<li>
+				<a href="{{ route('champion.details',['champion' => $champion])}}">{{ $champion->name }}, {{ $champion->title }}</a>
+			</li>
 		@endforeach
 	</ul>
 

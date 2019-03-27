@@ -10,9 +10,12 @@
             <!--<div class="features-icons-icon d-flex">
               <i class="icon-screen-desktop m-auto text-primary"></i>
 			</div>-->
-			<div class="img d-flex"></div>
+			<div class="img d-flex">
+      <a href="{{ route('champions') }}"></a>
+      </div>
             <h3>Campeones</h3>
-            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+            <a href="{{ route('champions') }}">Lista</a>
+            <p class="lead mb-0">Podremos ver a todos los campeones y ver sus habilidades</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -22,7 +25,8 @@
 			</div>-->
 			<div class="img d-flex"></div>
             <h3>Objetos</h3>
-            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+            <a href="{{ route('objects') }}">Lista</a>
+            <p class="lead mb-0">Podremos ver todos los objetos junto a una breve descripción</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -32,7 +36,8 @@
 			</div>-->
 			<div class="img d-flex"></div>
             <h3>Runas</h3>
-            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            <a href="{{ route('runes') }}">Lista</a>
+            <p class="lead mb-0">Se verá todas las runas e incluso una pequeña descripción para que no te pierdas</p>
           </div>
         </div>
       </div>

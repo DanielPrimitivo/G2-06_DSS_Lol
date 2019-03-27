@@ -28,7 +28,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Master LOL</a>
+      <a class="navbar-brand" href="/">Master LOL</a>
       <a class="btn btn-primary" href="#">Iniciar Sesión</a>
     </div>
   </nav>

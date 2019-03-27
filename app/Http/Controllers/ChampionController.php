@@ -13,8 +13,11 @@ class ChampionController extends Controller
         return view('champions', compact('champions'));
     }
 
-    public function show($id) {
-        return "Campeon {$id}";
+    public function show(Champion $champion) {
+
+        //$champion = Champion::findOrFail($id);
+        //dd($champion);
+        return view('champion', compact('champion'));
     }
 
     public function create() {

@@ -14,7 +14,9 @@ class RuneController extends Controller
     }
 
     public function show($id) {
-        return "Runa {$id}";
+        $rune = Rune::findOrFail($id);
+
+        return view('rune', compact('rune'));
     }
 
     public function create() {

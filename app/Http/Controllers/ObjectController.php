@@ -14,7 +14,9 @@ class ObjectController extends Controller
     }
 
     public function show($id) {
-        return "Objeto {$id}";
+        $object = Object::findOrFail($id);
+
+        return view('object', compact('object'));
     }
 
     public function create() {
