@@ -16,4 +16,8 @@ class ChampionController extends Controller
     public function show($id) {
         return "Campeon {$id}";
     }
+
+    public function create() {
+        return "Nuevo campeon";
+    }
 }
