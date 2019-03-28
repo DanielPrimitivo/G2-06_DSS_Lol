@@ -14,13 +14,34 @@ class ChampionController extends Controller
     }
 
     public function show(Champion $champion) {
-
-        //$champion = Champion::findOrFail($id);
-        //dd($champion);
         return view('champion', compact('champion'));
     }
 
     public function create() {
-        return "Nuevo campeon";
+        return view('championcreate');
+    }
+
+    public function store(){
+
+        $data = request()->validate([
+            'name' => ['required', 'unique:champions,name'],
+            'rol' => 'required',
+            'title' => 'required',
+            'location' => 'required'
+        ], [
+            'name.required' => 'El campo nombre está mal',
+            'rol.required' => 'El campo rol está mal',
+            'title.required' => 'El campo titulo está mal',
+            'location.required' => 'El campo localizacion está mal'
+        ]);
+        
+        Champion::create([
+            'name' => $data['nombre'],
+            'rol' => $data['rol'],
+            'title' => $data['title'],
+            'location' => $data['location']
+        ]);
+
+        return redirect()->route('champions');
     }
 }

@@ -20,18 +20,21 @@ Route::get('/campeones', 'ChampionController@index')->name('champions');
 Route::get('/campeones/{champion}', 'ChampionController@show')
     ->where('champion', '[0-9]+')->name('champion.details');
 
-Route::get('/campeones/crear', 'ChampionController@create');
+Route::get('/campeones/nuevo', 'ChampionController@create')->name('champions.create');
+
+Route::post('/campeones/crear', 'ChampionController@store')->name('champions.create.post');
 
 Route::get('/objetos', 'ObjectController@index')->name('objects');
 
-Route::get('/objetos/{id}', 'ObjectController@show')
-    ->where('id', '[0-9]+')->name('objetc.details');
+Route::get('/objetos/{object}', 'ObjectController@show')
+    ->where('object', '[0-9]+')->name('objetc.details');
 
 Route::get('/objetos/crear', 'ObjectController@create');
 
 Route::get('/runas', 'RuneController@index')->name('runes');
 
-Route::get('/runas/{id}', 'RuneController@show')
-    ->where('id', '[0-9]+')->name('rune.details');
+Route::get('/runas/{rune}', 'RuneController@show')
+    ->where('rune', '[0-9]+')->name('rune.details');
 
 Route::get('/runas/crear', 'RuneController@create');
+

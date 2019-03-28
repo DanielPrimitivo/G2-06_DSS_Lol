@@ -13,8 +13,8 @@ class ObjectController extends Controller
         return view('objects', compact('objects'));
     }
 
-    public function show($id) {
-        $object = Object::findOrFail($id);
+    public function show(Object $object) {
+        //$object = Object::findOrFail($id);
 
         return view('object', compact('object'));
     }

@@ -13,8 +13,8 @@ class RuneController extends Controller
         return view('runes', compact('runes'));
     }
 
-    public function show($id) {
-        $rune = Rune::findOrFail($id);
+    public function show(Rune $rune) {
+        //$rune = Rune::findOrFail($id);
 
         return view('rune', compact('rune'));
     }
