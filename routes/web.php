@@ -20,6 +20,10 @@ Route::get('/campeones', 'ChampionController@index')->name('champions');
 Route::get('/campeones/{champion}', 'ChampionController@show')
     ->where('champion', '[0-9]+')->name('champion.details');
 
+Route::get('/campeones/{champion}/editar', 'ChampionController@edit')->name('champion.edit');
+
+Route::put('/camepones/{champion}', 'ChampionController@update');
+
 Route::get('/campeones/nuevo', 'ChampionController@create')->name('champions.create');
 
 Route::post('/campeones/crear', 'ChampionController@store')->name('champions.create.post');

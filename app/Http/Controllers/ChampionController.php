@@ -36,12 +36,21 @@ class ChampionController extends Controller
         ]);
         
         Champion::create([
-            'name' => $data['nombre'],
+            'name' => $data['name'],
             'rol' => $data['rol'],
             'title' => $data['title'],
             'location' => $data['location']
         ]);
 
         return redirect()->route('champions');
+    }
+
+    public function edit(Champion $champion){
+        return view('championedit', compact('champion'));
+    }
+
+    public function update(Champion $champion){
+        $champion->update(request()->all());
+        return redirect()->route('champions.details', ['champion' => $champion]);
     }
 }
