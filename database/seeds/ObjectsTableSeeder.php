@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Object;
 
 class ObjectsTableSeeder extends Seeder
 {
@@ -11,6 +12,16 @@ class ObjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $info = parse_ini_file("object.ini", true);
+        foreach($info as $obj){
+            $object = new Object([
+                'name' => $obj['name'],
+                'price' => $obj['price'],
+                'description' => $obj['description'],
+                'type' => $obj['type'],
+                'subtype' => $obj['subtype']
+            ]);
+            $object->save();
+        }
     }
 }

@@ -20,7 +20,7 @@ class CreateObjectsTable extends Migration
             $table->string('description');
             $table->string('type');
             $table->string('subtype');
-            $table->string('icon'); // Ruta de acceso a la imagen
+            $table->string('icon')->nullable(); // Ruta de acceso a la imagen
             $table->timestamps();
         });
     }
