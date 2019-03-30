@@ -17,7 +17,8 @@
         </div>
     @endif
 
-	<form method="POST" action="{{route('champions.create.post')}}">
+	<form method="POST" action="{{ route('champion.update', ['champion' => $champion]) }}">
+        {{ method_field('PUT') }} <!-- Para que este formulario sea de tipo PUT y así poder actualizar -->
         {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
         <!-- Formulario para añadir nuevo campeon -->

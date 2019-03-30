@@ -17,7 +17,7 @@
         </div>
     @endif
 
-	<form method="POST" action="{{route('champions.create.post')}}">
+	<form method="POST" action="{{route('champion.create.post')}}">
         {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
         <!-- Formulario para añadir nuevo campeon -->

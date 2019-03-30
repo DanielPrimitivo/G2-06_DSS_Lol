@@ -20,13 +20,15 @@ Route::get('/campeones', 'ChampionController@index')->name('champions');
 Route::get('/campeones/{champion}', 'ChampionController@show')
     ->where('champion', '[0-9]+')->name('champion.details');
 
+Route::get('/campeones/nuevo', 'ChampionController@create')->name('champion.create');
+
+Route::post('/campeones/crear', 'ChampionController@store')->name('champion.create.post');
+
 Route::get('/campeones/{champion}/editar', 'ChampionController@edit')->name('champion.edit');
 
-Route::put('/camepones/{champion}', 'ChampionController@update');
+Route::put('/camepones/{champion}', 'ChampionController@update')->name('champion.update');
 
-Route::get('/campeones/nuevo', 'ChampionController@create')->name('champions.create');
-
-Route::post('/campeones/crear', 'ChampionController@store')->name('champions.create.post');
+Route::delete('/campeones/{champion}', 'ChampionController@destroy')->name('champion.destroy');
 
 Route::get('/objetos', 'ObjectController@index')->name('objects');
 

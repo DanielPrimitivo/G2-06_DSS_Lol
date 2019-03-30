@@ -50,7 +50,21 @@ class ChampionController extends Controller
     }
 
     public function update(Champion $champion){
-        $champion->update(request()->all());
-        return redirect()->route('champions.details', ['champion' => $champion]);
+        $data = request()->validate([
+            'name' => 'required|unique:champions,name,'.$champion->id,
+            'rol' => 'required',
+            'title' => 'required',
+            'location' => 'required'
+        ]);
+
+        $champion->update($data);
+
+        return redirect()->route('champion.details', ['champion' => $champion]);
+    }
+
+    public function destroy(Champion $champion){
+        $champion->delete();
+
+        return redirect()->route('champions');
     }
 }
