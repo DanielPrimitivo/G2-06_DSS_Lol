@@ -22,5 +22,12 @@
 			</div>
 		@endforeach
 	</div>
+	<div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+				{{ $runes->links() }}
+			</div>
+		</div>
+	</div>
 
 @endsection

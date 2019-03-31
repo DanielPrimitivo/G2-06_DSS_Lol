@@ -22,9 +22,12 @@
 			</div>
 		@endforeach
 	</div>
-	<div class="row justify-content-center">
-		<div class="col">
-			{{ $champions->links() }}
-</div></div>
+	<div class="row justify-content-center align-items-center">
+		<div class="col-6">
+			<div class="features-icons-item mx-auto mb-2 mt-2">
+				{{ $champions->links() }}
+			</div>
+		</div>
+	</div>
 
 @endsection

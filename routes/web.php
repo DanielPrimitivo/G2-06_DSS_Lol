@@ -20,6 +20,8 @@ Route::get('/campeones', 'ChampionController@index')->name('champions');
 Route::get('/campeones/{champion}', 'ChampionController@show')
     ->where('champion', '[0-9]+')->name('champion.details');
 
+Route::get('/campeones/lista', 'ChampionController@list')->name('champions.list');
+
 Route::get('/campeones/nuevo', 'ChampionController@create')->name('champion.create');
 
 Route::post('/campeones/crear', 'ChampionController@store')->name('champion.create.post');
@@ -35,12 +37,32 @@ Route::get('/objetos', 'ObjectController@index')->name('objects');
 Route::get('/objetos/{object}', 'ObjectController@show')
     ->where('object', '[0-9]+')->name('object.details');
 
-Route::get('/objetos/crear', 'ObjectController@create');
+Route::get('/objetos/lista', 'ObjectController@list')->name('objects.list');
+
+Route::get('/objetos/nuevo', 'ObjectController@create')->name('object.create');
+
+Route::post('/objetos/crear', 'ObjectController@store')->name('object.create.post');
+
+Route::get('/objetos/{object}/editar', 'ObjectController@edit')->name('object.edit');
+
+Route::put('/objetos/{object}', 'ObjectController@update')->name('object.update');
+
+Route::delete('/objetos/{object}', 'ObjectController@destroy')->name('object.destroy');
 
 Route::get('/runas', 'RuneController@index')->name('runes');
 
 Route::get('/runas/{rune}', 'RuneController@show')
     ->where('rune', '[0-9]+')->name('rune.details');
 
-Route::get('/runas/crear', 'RuneController@create');
+Route::get('/runas/lista', 'RuneController@list')->name('runes.list');
+
+Route::get('/runas/nuevo', 'RuneController@create')->name('rune.create');
+
+Route::post('/runas/crear', 'RuneController@store')->name('rune.create.post');
+
+Route::get('/runas/{rune}/editar', 'RuneController@edit')->name('rune.edit');
+
+Route::put('/runas/{rune}', 'RuneController@update')->name('rune.update');
+
+Route::delete('/runas/{rune}', 'RuneController@destroy')->name('rune.destroy');
 

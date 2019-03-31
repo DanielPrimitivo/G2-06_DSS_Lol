@@ -8,18 +8,69 @@ use App\Rune;
 class RuneController extends Controller
 {
     public function index() {
-        $runes = Rune::all();
+        $runes = Rune::paginate(12);
 
         return view('runes', compact('runes'));
     }
 
     public function show(Rune $rune) {
-        //$rune = Rune::findOrFail($id);
-
         return view('rune', compact('rune'));
     }
 
+    public function list() {
+        $runes = Rune::paginate(20);
+
+        return view('runeslist', compact('runes'));
+    }
+
     public function create() {
-        return "Nueva runa";
+        return view('championcreate');
+    }
+
+    public function store(){
+
+        $data = request()->validate([
+            'name' => ['required', 'unique:champions,name'],
+            'rol' => 'required',
+            'title' => 'required',
+            'location' => 'required'
+        ], [
+            'name.required' => 'El campo nombre está mal',
+            'rol.required' => 'El campo rol está mal',
+            'title.required' => 'El campo titulo está mal',
+            'location.required' => 'El campo localizacion está mal'
+        ]);
+        
+        Champion::create([
+            'name' => $data['name'],
+            'rol' => $data['rol'],
+            'title' => $data['title'],
+            'location' => $data['location']
+        ]);
+
+        return redirect()->route('champions');
+    }
+
+    public function edit(Champion $champion){
+        return view('championedit', compact('champion'));
+    }
+
+    public function update(Champion $champion){
+        $data = request()->validate([
+            'name' => 'required|unique:champions,name,'.$champion->id,
+            'rol' => 'required',
+            'title' => 'required',
+            'location' => 'required'
+        ]);
+
+        $champion->update($data);
+
+        return redirect()->route('champion.details', ['champion' => $champion]);
+    }
+
+    public function destroy(Champion $champion){
+        $champion->delete();
+
+        return redirect()->route('champions');
     }
 }

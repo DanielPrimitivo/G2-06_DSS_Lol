@@ -17,6 +17,12 @@ class ChampionController extends Controller
         return view('champion', compact('champion'));
     }
 
+    public function list() {
+        $champions = Champion::paginate(20);
+
+        return view('championslist', compact('champions'));
+    }
+
     public function create() {
         return view('championcreate');
     }
