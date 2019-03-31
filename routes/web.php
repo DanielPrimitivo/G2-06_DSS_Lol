@@ -26,14 +26,14 @@ Route::post('/campeones/crear', 'ChampionController@store')->name('champion.crea
 
 Route::get('/campeones/{champion}/editar', 'ChampionController@edit')->name('champion.edit');
 
-Route::put('/camepones/{champion}', 'ChampionController@update')->name('champion.update');
+Route::put('/campeones/{champion}', 'ChampionController@update')->name('champion.update');
 
 Route::delete('/campeones/{champion}', 'ChampionController@destroy')->name('champion.destroy');
 
 Route::get('/objetos', 'ObjectController@index')->name('objects');
 
 Route::get('/objetos/{object}', 'ObjectController@show')
-    ->where('object', '[0-9]+')->name('objetc.details');
+    ->where('object', '[0-9]+')->name('object.details');
 
 Route::get('/objetos/crear', 'ObjectController@create');
 

@@ -61,8 +61,8 @@ header.masthead h1 {
 }
 
 .features-icons {
-	padding-top: 7rem;
-	padding-bottom: 7rem;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
 }
 
 .features-icons .features-icons-item {
@@ -97,8 +97,7 @@ header.masthead h1 {
 }
 
 .img2 {
-	height: 14rem;
-	background-size: cover;
+	height: 10rem;
 	position: relative;
 	border: 0.5rem solid #bfbfbf;
 	margin-bottom: 1rem;
@@ -109,6 +108,25 @@ header.masthead h1 {
 	border-radius: 1.5rem;
 }
 
+
+@media (max-width: 576px) {
+	.img2 {
+		height: 10rem;
+		position: relative;
+		border: 0.5rem solid #bfbfbf;
+		margin-bottom: 1rem;
+	}
+}
+
+@media (max-width: 400px) {
+	.img2 {
+		height: 7rem;
+		position: relative;
+		border: 0.5rem solid #bfbfbf;
+		margin-bottom: 1rem;
+	}
+}
+
 .lin:link, .lin:visited, .lin:active {
 	text-decoration: none;
 	color: black;
@@ -116,6 +134,10 @@ header.masthead h1 {
 
 .lin:link:hover, .lin:visited:hover, .lin:active:hover {
 	color: #bfbfbf;
+}
+
+.space {
+	margin-top: 3rem;
 }
 
 footer.footer {

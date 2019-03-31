@@ -3,22 +3,28 @@
 @section('title', "Campeones")
 
 @section('content')
-	<div class="row">
-		<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-			<h1>Campeones</h1>
+	<div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+				<h1>Campeones</h1>
+			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row justify-content-center space">
 		@foreach ($champions as $champion)
-			<div class="col-lg-2 col-sm-3 col-4">
+			<div class="col-lg-2 col-md-3 col-sm-4 col-5">
 				<div class="features-icons-item mb-5 mb-lg-0 mb-lg-3">
 					<a href="{{ route('champion.details', $champion) }}" class="lin">
-						<div style="background: url('{{ $champion->icon }}') no-repeat center center" class="img2 d-flex"></div>
+						<div style="background: url('{{ $champion->icon }}') no-repeat center center; background-size: cover" class="img2 d-flex"></div>
 						<h3>{{ $champion->name}}</h3>
 					</a>
 				</div>
 			</div>
 		@endforeach
 	</div>
+	<div class="row justify-content-center">
+		<div class="col">
+			{{ $champions->links() }}
+</div></div>
 
 @endsection
