@@ -87,22 +87,35 @@ header.masthead h1 {
 	height: 15rem;
 	background-size: cover;
 	position: relative;
-	border: 0.5rem solid black;
+	border: 0.5rem solid #bfbfbf;
 	margin-bottom: 1rem;
 }
 
 .img:hover {
-	border: 0.5rem solid blue;
+	border: 0.5rem solid black;
+	border-radius: 1.5rem;
+}
+
+.img2 {
+	height: 14rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
+.img2:hover {
+	border: 0.5rem solid black;
 	border-radius: 1.5rem;
 }
 
 .lin:link, .lin:visited, .lin:active {
 	text-decoration: none;
-	color:black;
+	color: black;
 }
 
 .lin:link:hover, .lin:visited:hover, .lin:active:hover {
-	color:blue;
+	color: #bfbfbf;
 }
 
 footer.footer {

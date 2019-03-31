@@ -3,25 +3,22 @@
 @section('title', "Campeones")
 
 @section('content')
-
-	<h1>Campeones</h1>
-
-	<p>
-		<a href="{{ route('champion.create')}}">Nuevo campeón</a>
-	</p>
-
-	<ul>
+	<div class="row">
+		<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+			<h1>Campeones</h1>
+		</div>
+	</div>
+	<div class="row">
 		@foreach ($champions as $champion)
-			<li>
-				<a href="{{ route('champion.details',['champion' => $champion])}}">{{ $champion->name }}, {{ $champion->title }}</a>
-				<a href="{{ route('champion.edit',['champion' => $champion])}}"> Editar campeon </a>
-				<form action="{{ route('champion.destroy', $champion) }}" method="POST">
-					{{ method_field('DELETE') }}
-					{{ csrf_field() }}
-					<button type=submit>Eliminar</button>
-				</form>
-			</li>
+			<div class="col-lg-3 col-sm-4 col-6">
+				<div class="features-icons-item mb-5 mb-lg-0 mb-lg-3">
+					<a href="{{ route('champion.details', $champion) }}" class="lin">
+						<div style="background: url('../img/bg-masthead.jpg') no-repeat center center" class="img2 d-flex"></div>
+						<h3>{{ $champion->name}}</h3>
+					</a>
+				</div>
+			</div>
 		@endforeach
-	</ul>
+	</div>
 
 @endsection
