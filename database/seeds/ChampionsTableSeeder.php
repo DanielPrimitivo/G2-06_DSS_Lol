@@ -19,9 +19,12 @@ class ChampionsTableSeeder extends Seeder
                 'name' => $champ['name'],
                 'rol' => $champ['rol'],
                 'title' => $champ['title'],
-                'location' => $champ['location']
+                'location' => $champ['location'],
+                'icon' => $champ['icon'],
+                'wallpaper' => $champ['wallpaper']
             ]);
             $champion->save();
         }
+        
     }
 }

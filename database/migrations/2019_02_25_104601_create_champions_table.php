@@ -16,9 +16,9 @@ class CreateChampionsTable extends Migration
         Schema::create('champions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('rol')->nullable();
-            $table->string('title')->nullable();
-            $table->string('location')->nullable();
+            $table->string('rol');
+            $table->string('title');
+            $table->string('location');
             $table->string('icon')->nullable();
             $table->string('wallpaper')->nullable();
             $table->timestamps();
