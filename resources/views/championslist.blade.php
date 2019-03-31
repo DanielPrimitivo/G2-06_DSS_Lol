@@ -39,7 +39,7 @@
 			<div class="col-3"></div>
 		@endforeach
 	</div>
-	<div class="row justify-content-center align-items-center space">
+	<div class="row justify-content-center align-items-center">
 		<div class="col-4">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
 				{{ $champions->links() }}

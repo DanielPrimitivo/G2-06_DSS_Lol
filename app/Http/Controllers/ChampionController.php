@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Champion;
+use App\Hability;
+use DB;
 
 class ChampionController extends Controller
 {
@@ -69,8 +71,10 @@ class ChampionController extends Controller
     }
 
     public function destroy(Champion $champion){
+        $habilities = Hability::where('champion_id','=', $champion->id)->delete();
+        $champ_users = DB::table('champion_user')->where('champion_id','=', $champion->id)->delete();
         $champion->delete();
 
-        return redirect()->route('champions');
+        return redirect()->route('champions.list');
     }
 }
