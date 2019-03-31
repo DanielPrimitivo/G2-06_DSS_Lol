@@ -20,7 +20,8 @@ class HabilitiesTableSeeder extends Seeder
             $hability = new Hability([
                 'name' => $hab['name'],
                 'description' => $hab['description'],
-                'champion_id' => $champ->id
+                'champion_id' => $champ->id,
+                'icon' => $hab['icon']
             ]);
             $hability->save();
         }
