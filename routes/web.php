@@ -33,11 +33,42 @@ Route::get('/campeones/{champion}/editar', 'ChampionController@edit')->name('cha
 Route::put('/campeones/{champion}', 'ChampionController@update')->name('champion.update');
 
 Route::delete('/campeones/{champion}', 'ChampionController@destroy')->name('champion.destroy');
+/*
+
+
+
+
+
+
+
+
+*/
+Route::get('/habilidades', 'HabilityController@index')->name('habilities');
+
+Route::get('/habilidades/lista', 'HabilityController@list')->name('habilities.list');
+
+Route::get('/habilidades/crear', 'HabilityController@store')->name('hability.create.post');
+
+Route::get('/habilidades/nueva', 'HabilityController@create')->name('hability.create');
+
+Route::get('/habilidades/{hability}/editar', 'HabilityController@edit')->name('hability.edit');
+
+Route::get('/habilidades/{hability}', 'HabilityController@show')->name('hability.details');
+
+Route::get('/habilidades/{hability}', 'HabilityController@destroy')->name('hability.destroy');
+
+
+
+
 
 Route::get('/objetos', 'ObjectController@index')->name('objects');
 
 Route::get('/objetos/{object}', 'ObjectController@show')
     ->where('object', '[0-9]+')->name('object.details');
+
+    //aqui
+Route::get('/usuarios/lista', 'UserController@list')->name('users.list');
+//
 
 Route::get('/objetos/lista', 'ObjectController@list')->name('objects.list');
 

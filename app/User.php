@@ -32,7 +32,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Champion');
     }
 
+    /* DESHABILITADO HASTA LA INTRODUCCIÓN DE LAS PÁGINAS DE RUNAS
+
     public function runespages(){
         return $this->hasMany('App\RunePage');
-    }
+    }*/
 }
