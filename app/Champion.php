@@ -18,7 +18,7 @@ class Champion extends Model
         return $this->belongsToMany('App\User');
     }
 
-    public function create(array $data){
+    public static function create(array $data){
         $champion = new Champion();
         $champion->name = $data['name'];
         $champion->rol = $data['rol'];
@@ -26,38 +26,44 @@ class Champion extends Model
         $champion->location = $data['location'];
         $champion->save();
         return redirect()->route('champions');
-        /*Champion::create([
-            'name' => $data['name'],
-            'rol' => $data['rol'],
-            'title' => $data['title'],
-            'location' => $data['location']
-        ]);*/
     }
 
-    public function upgrade(array $data, Champion $champion){
+    public static function upgrade(array $data, Champion $champion){
         $champion->update($data);
         return redirect()->route('champion.details', ['champion' => $champion]);
     }
 
-    public function eliminar(Champion $champion){
+    public static function crear(){
+        return view('championcreate');
+    }
+
+    public static function eliminar(Champion $champion){
         $habilities = Hability::where('champion_id','=', $champion->id)->delete();
         $champ_users = DB::table('champion_user')->where('champion_id','=', $champion->id)->delete();
         $champion->delete();
         return redirect()->route('champions.list');
     }
 
-    public function listar(){
+    public static function listar(){
         $champions = Champion::paginate(20);
         return view('championslist', compact('champions'));
     }
 
-    public function principal(){
+    public static function principal(){
         $champions = Champion::paginate(12);
         return view('champions', compact('champions'));
     }
 
-    public function ordenarAlfabeticamente(){
+    public static function informacionIndividual(Champion $champion){
+        return view('champion', compact('champion'));
+    }
+
+    public static function ordenarAlfabeticamente(){
         $champions = Champion::orderBy('name', 'ASC')->paginate(12);
         return view('champions', compact('champions'));
+    }
+
+    public static function editarInfo(Champion $champion){
+        return view('championedit', compact('champion'));
     }
 }

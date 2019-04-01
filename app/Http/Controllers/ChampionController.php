@@ -11,25 +11,23 @@ class ChampionController extends Controller
 {   
     
     public function index() {
-        $champion = new Champion();
-        return $champion->principal();
+        return Champion::principal();
     }
 
     public function show(Champion $champion) {
-        return view('champion', compact('champion'));
+        return Champion::informacionIndividual($champion);
     }
 
     public function list() {
-        
-        return $champion->listar();
+        return Champion::listar();
     }
 
     public function create() {
-        return view('championcreate');
+        return Champion::crear();
     }
 
     public function store(){ // Crear campeon
-        $champion = new Champion();
+        // La validacion se debe de hacer en el controlador
         $data = request()->validate([
             'name' => ['required', 'unique:champions,name'],
             'rol' => 'required',
@@ -41,11 +39,11 @@ class ChampionController extends Controller
             'title.required' => 'El campo titulo está mal',
             'location.required' => 'El campo localizacion está mal'
         ]);
-        return $champion->create($data);
+        return Champion::create($data);
     }
 
     public function edit(Champion $champion){
-        return view('championedit', compact('champion'));
+        return Champion::editarInfo($champion);
     }
 
     public function update(Champion $champion){
@@ -55,15 +53,14 @@ class ChampionController extends Controller
             'title' => 'required',
             'location' => 'required'
         ]);
-        return $champion->upgrade($data, $champion);
+        return Champion::upgrade($data, $champion);
     }
 
     public function destroy(Champion $champion){
-        return $champion->eliminar($champion);
+        return Champion::eliminar($champion);
     }
 
     public function listAlphabetical(){
-        $champion = new Champion();
-        return $champion->ordenarAlfabeticamente();
+        return Champion::ordenarAlfabeticamente();
     }
 }
