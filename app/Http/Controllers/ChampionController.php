@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Champion;
 use App\Hability;
-use DB;
+
 
 class ChampionController extends Controller
-{
+{   
+    
     public function index() {
-        $champions = Champion::paginate(12);
-         return view('champions', compact('champions'));
+        $champion = new Champion();
+        return $champion->principal();
     }
 
     public function show(Champion $champion) {
@@ -19,17 +20,16 @@ class ChampionController extends Controller
     }
 
     public function list() {
-        $champions = Champion::paginate(20);
-
-        return view('championslist', compact('champions'));
+        
+        return $champion->listar();
     }
 
     public function create() {
         return view('championcreate');
     }
 
-    public function store(){
-
+    public function store(){ // Crear campeon
+        $champion = new Champion();
         $data = request()->validate([
             'name' => ['required', 'unique:champions,name'],
             'rol' => 'required',
@@ -41,15 +41,7 @@ class ChampionController extends Controller
             'title.required' => 'El campo titulo está mal',
             'location.required' => 'El campo localizacion está mal'
         ]);
-        
-        Champion::create([
-            'name' => $data['name'],
-            'rol' => $data['rol'],
-            'title' => $data['title'],
-            'location' => $data['location']
-        ]);
-
-        return redirect()->route('champions');
+        return $champion->create($data);
     }
 
     public function edit(Champion $champion){
@@ -63,22 +55,15 @@ class ChampionController extends Controller
             'title' => 'required',
             'location' => 'required'
         ]);
-
-        $champion->update($data);
-
-        return redirect()->route('champion.details', ['champion' => $champion]);
+        return $champion->upgrade($data, $champion);
     }
 
     public function destroy(Champion $champion){
-        $habilities = Hability::where('champion_id','=', $champion->id)->delete();
-        $champ_users = DB::table('champion_user')->where('champion_id','=', $champion->id)->delete();
-        $champion->delete();
-
-        return redirect()->route('champions.list');
+        return $champion->eliminar($champion);
     }
 
     public function listAlphabetical(){
-        $champions = Champion::orderBy('name', 'ASC')->paginate(18);
-        return view('champions', compact('champions'));
+        $champion = new Champion();
+        return $champion->ordenarAlfabeticamente();
     }
 }
