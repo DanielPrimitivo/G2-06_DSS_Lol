@@ -11,8 +11,7 @@ class ChampionController extends Controller
 {
     public function index() {
         $champions = Champion::paginate(12);
-
-        return view('champions', compact('champions'));
+         return view('champions', compact('champions'));
     }
 
     public function show(Champion $champion) {
@@ -76,5 +75,10 @@ class ChampionController extends Controller
         $champion->delete();
 
         return redirect()->route('champions.list');
+    }
+
+    public function listAlphabetical(){
+        $champions = Champion::orderBy('name', 'ASC')->paginate(18);
+        return view('champions', compact('champions'));
     }
 }

@@ -10,6 +10,20 @@
 			</div>
 		</div>
 	</div>
+	<div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+				<div class="form-check">
+					<form method="GET" action="{{ route('champions') }}">
+						<input class="form-check-button" type="submit" value="volver">
+					</form>
+					<form method="GET" action="{{ route('champions.order') }}">
+						<input class="form-check-button" type="submit" value="ordenar alfabeticamente">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row justify-content-center space">
 		@foreach ($champions as $champion)
 			<div class="col-lg-2 col-md-3 col-sm-4 col-5">

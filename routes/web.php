@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('/campeones', 'ChampionController@index')->name('champions');
 
+Route::get('/campeonesOrder', 'ChampionController@listAlphabetical')->name('champions.order');
+
 Route::get('/campeones/{champion}', 'ChampionController@show')
     ->where('champion', '[0-9]+')->name('champion.details');
 
