@@ -60,6 +60,16 @@ Route::get('/habilidades/{hability}', 'HabilityController@show')->name('hability
 Route::delete('/habilidades/{hability}', 'HabilityController@destroy')->name('hability.destroy');
 
 
+    //aqui
+Route::get('/usuarios', 'UserController@index')->name('users');
+
+Route::get('/usuarios/lista', 'UserController@list')->name('users.list');
+
+Route::get('/usuarios/{user}', 'UserController@show')->name('user.details');
+
+Route::delete('/usuarios/{user}', 'UserController@destroy')->name('user.destroy');
+    //
+
 
 
 
@@ -68,9 +78,7 @@ Route::get('/objetos', 'ObjectController@index')->name('objects');
 Route::get('/objetos/{object}', 'ObjectController@show')
     ->where('object', '[0-9]+')->name('object.details');
 
-    //aqui
-Route::get('/usuarios/lista', 'UserController@list')->name('users.list');
-//
+
 
 Route::get('/objetos/lista', 'ObjectController@list')->name('objects.list');
 

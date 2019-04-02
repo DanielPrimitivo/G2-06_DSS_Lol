@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable
 {
@@ -28,8 +30,25 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function champions(){
-        return $this->belongsToMany('App\Champion');
+
+    public static function informacionIndividual(User $user){
+        return view('user', compact('user'));
+    }
+
+    public static function principal(){
+        $users = User::paginate(18);
+        return view('users', compact('users'));
+    }
+
+    public static function listar(){
+        $users = User::paginate(18);
+        return view('userslist', compact('users'));
+    }
+
+    public static function eliminar(User $user){
+        $champ_users = DB::table('champion_user')->where('user_id','=', $user->id)->delete();
+        $user->delete();
+        return redirect()->route('users.list');
     }
 
     /* DESHABILITADO HASTA LA INTRODUCCIÓN DE LAS PÁGINAS DE RUNAS
