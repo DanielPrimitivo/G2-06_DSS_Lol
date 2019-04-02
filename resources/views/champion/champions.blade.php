@@ -15,8 +15,8 @@
 			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
 				<div class="form-check">
 					<form method="GET" action="{{ route('champions') }}">
-					<input class="form-check-checkbox" type="checkbox" id="order" name="order" {{ $check }}>
-						<input class="form-check-button" type="submit" value="Ordenar alfabeticamente">
+						<input class="form-check-checkbox" type="checkbox" id="order" name="order" {{ $check }}>
+						<input class="btn btn-primary" type="submit" value="Ordenar alfabeticamente">
 					</form>
 				</div>
 			</div>

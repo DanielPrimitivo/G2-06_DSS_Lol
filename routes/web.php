@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/admin', function () {
+    return view('homeadmin');
+});
+
 /** ************************** RUTAS CAMPEONES ************************** */
 
 Route::get('/campeones', 'ChampionController@index')->name('champions');
