@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hability extends Model
 {
+    protected $fillable = array('name', 'description', 'champion_id');
+
     public function champion(){
         return $this->belongsTo('App\Champion');
     }
@@ -40,7 +42,6 @@ class Hability extends Model
 
     public static function upgrade(array $data, Hability $hability){
         $hability->update($data);
-        dd($hability);
         return redirect()->route('hability.details', ['hability' => $hability]);
     }
 

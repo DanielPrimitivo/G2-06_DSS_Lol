@@ -3,9 +3,9 @@
 @section('title', "Habilidades")
 
 @section('content')
-	<p>
+	<!--<p>
 		<a href="{{ route('hability.create')}}">Nueva habilidad</a>
-	</p>
+	</p>-->
 
 	<div class="row justify-content-center">
 		<div class="col align-self-center">
