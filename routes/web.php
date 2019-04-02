@@ -11,9 +11,14 @@
 |
 */
 
+/** ************************** RUTA INICIAL ************************** */
+
+
 Route::get('/', function () {
     return view('home');
 });
+
+/** ************************** RUTAS CAMPEONES ************************** */
 
 Route::get('/campeones', 'ChampionController@index')->name('champions');
 
@@ -33,16 +38,9 @@ Route::get('/campeones/{champion}/editar', 'ChampionController@edit')->name('cha
 Route::put('/campeones/{champion}', 'ChampionController@update')->name('champion.update');
 
 Route::delete('/campeones/{champion}', 'ChampionController@destroy')->name('champion.destroy');
-/*
 
+/** ************************** RUTAS HABILIDADES ************************** */
 
-
-
-
-
-
-
-*/
 Route::get('/habilidades', 'HabilityController@index')->name('habilities');
 
 Route::get('/habilidades/lista', 'HabilityController@list')->name('habilities.list');
@@ -59,8 +57,8 @@ Route::get('/habilidades/{hability}', 'HabilityController@show')->name('hability
 
 Route::delete('/habilidades/{hability}', 'HabilityController@destroy')->name('hability.destroy');
 
+/** ************************** RUTAS USUARIOS ************************** */
 
-    //aqui
 Route::get('/usuarios', 'UserController@index')->name('users');
 
 Route::get('/usuarios/lista', 'UserController@list')->name('users.list');
@@ -68,17 +66,13 @@ Route::get('/usuarios/lista', 'UserController@list')->name('users.list');
 Route::get('/usuarios/{user}', 'UserController@show')->name('user.details');
 
 Route::delete('/usuarios/{user}', 'UserController@destroy')->name('user.destroy');
-    //
 
-
-
+/** ************************** RUTAS OBJETOS ************************** */
 
 Route::get('/objetos', 'ObjectController@index')->name('objects');
 
 Route::get('/objetos/{object}', 'ObjectController@show')
     ->where('object', '[0-9]+')->name('object.details');
-
-
 
 Route::get('/objetos/lista', 'ObjectController@list')->name('objects.list');
 
@@ -91,6 +85,8 @@ Route::get('/objetos/{object}/editar', 'ObjectController@edit')->name('object.ed
 Route::put('/objetos/{object}', 'ObjectController@update')->name('object.update');
 
 Route::delete('/objetos/{object}', 'ObjectController@destroy')->name('object.destroy');
+
+/** ************************** RUTAS RUNAS ************************** */
 
 Route::get('/runas', 'RuneController@index')->name('runes');
 

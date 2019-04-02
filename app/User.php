@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function champions(){
+        return $this->belongsToMany('App\Champion');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -32,17 +36,17 @@ class User extends Authenticatable
 
 
     public static function informacionIndividual(User $user){
-        return view('user', compact('user'));
+        return view('user.user', compact('user'));
     }
 
     public static function principal(){
         $users = User::paginate(18);
-        return view('users', compact('users'));
+        return view('user.users', compact('users'));
     }
 
     public static function listar(){
         $users = User::paginate(18);
-        return view('userslist', compact('users'));
+        return view('user.userslist', compact('users'));
     }
 
     public static function eliminar(User $user){

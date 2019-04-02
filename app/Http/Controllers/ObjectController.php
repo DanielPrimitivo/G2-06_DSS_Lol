@@ -8,69 +8,59 @@ use App\Object;
 class ObjectController extends Controller
 {
     public function index() {
-        $objects = Object::paginate(12);
-
-        return view('objects', compact('objects'));
+        return Object::listaUserNormal();
     }
 
     public function show(Object $object) {
-        return view('object', compact('object'));
+        return Object::informacionIndividual($object);
     }
 
     public function list() {
-        $objects = Object::paginate(20);
-
-        return view('objectslist', compact('objects'));
+        return Object::listaUserAdmin();
     }
 
     public function create() {
-        return view('championcreate');
+        return Object::PagCrear();
     }
 
-    public function store(){
-
+    public function store(){ // Crear campeon
+        // La validacion se debe de hacer en el controlador
         $data = request()->validate([
-            'name' => ['required', 'unique:champions,name'],
-            'rol' => 'required',
-            'title' => 'required',
-            'location' => 'required'
+            'name' => ['required', 'unique:objects,name'],
+            'price' => 'required',
+            'description' => 'required',
+            'type' => 'required',
+            'subtype' => 'required'
         ], [
             'name.required' => 'El campo nombre está mal',
-            'rol.required' => 'El campo rol está mal',
-            'title.required' => 'El campo titulo está mal',
-            'location.required' => 'El campo localizacion está mal'
+            'price.required' => 'El campo precio está mal',
+            'description.required' => 'El campo descripcion está mal',
+            'type.required' => 'El campo tipo está mal',
+            'subtype.required' => 'El campo subtipo está mal'
         ]);
-        
-        Champion::create([
-            'name' => $data['name'],
-            'rol' => $data['rol'],
-            'title' => $data['title'],
-            'location' => $data['location']
-        ]);
-
-        return redirect()->route('champions');
+        return Object::crear($data);
     }
 
-    public function edit(Champion $champion){
-        return view('championedit', compact('champion'));
+    public function edit(Object $object){
+        return Object::editarInfo($object);
     }
 
-    public function update(Champion $champion){
+    public function update(Object $object){
         $data = request()->validate([
-            'name' => 'required|unique:champions,name,'.$champion->id,
-            'rol' => 'required',
-            'title' => 'required',
-            'location' => 'required'
+            'name' => 'required|unique:objects,name,'.$object->id,
+            'price' => 'required',
+            'description' => 'required',
+            'type' => 'required',
+            'subtype' => 'required'
         ]);
-
-        $champion->update($data);
-
-        return redirect()->route('champion.details', ['champion' => $champion]);
+        return Object::actualizar($data, $object);
     }
 
-    public function destroy(Champion $champion){
-        $champion->delete();
+    public function destroy(Object $object){
+        return Object::eliminar($object);
+    }
 
-        return redirect()->route('champions');
+    public function listAlphabetical(){
+        return Object::ordenarAlfabeticamente();
     }
 }

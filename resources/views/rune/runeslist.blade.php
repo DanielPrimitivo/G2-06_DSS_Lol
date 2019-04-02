@@ -4,7 +4,7 @@
 
 @section('content')
 	<p>
-		<a href="{{ route('object.create')}}">Nueva runa</a>
+		<a href="{{ route('rune.create')}}">Nueva runa</a>
 	</p>
 
 	<div class="row justify-content-center">

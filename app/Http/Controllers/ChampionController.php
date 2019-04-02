@@ -11,7 +11,7 @@ class ChampionController extends Controller
 {   
     
     public function index() {
-        return Champion::principal();
+        return Champion::listaUserNormal();
     }
 
     public function show(Champion $champion) {
@@ -19,11 +19,11 @@ class ChampionController extends Controller
     }
 
     public function list() {
-        return Champion::listar();
+        return Champion::listaUserAdmin();
     }
 
     public function create() {
-        return Champion::crear();
+        return Champion::PagCrear();
     }
 
     public function store(){ // Crear campeon
@@ -39,7 +39,7 @@ class ChampionController extends Controller
             'title.required' => 'El campo titulo está mal',
             'location.required' => 'El campo localizacion está mal'
         ]);
-        return Champion::create($data);
+        return Champion::crear($data);
     }
 
     public function edit(Champion $champion){
@@ -53,7 +53,7 @@ class ChampionController extends Controller
             'title' => 'required',
             'location' => 'required'
         ]);
-        return Champion::upgrade($data, $champion);
+        return Champion::actualizar($data, $champion);
     }
 
     public function destroy(Champion $champion){

@@ -7,7 +7,7 @@
 	<h1>Campeon</h1>
 
 	<ul>
-        <li>Nombre campeon {{$champion->name}}</li>
+        	<li>Nombre campeon {{$champion->name}}</li>
 	</ul>
 
 @endsection

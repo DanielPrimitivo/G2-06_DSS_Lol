@@ -14,17 +14,17 @@ class Hability extends Model
 
     public static function informacionIndividual(Hability $hability){
         $champion = Champion::where('id', '=', $hability->champion_id);
-        return view('hability', compact('hability', 'champion'));
+        return view('hability.hability', compact('hability', 'champion'));
     }
 
     public static function principal(){
         $habilities = Hability::paginate(18);
-        return view('habilities', compact('habilities'));
+        return view('hability.habilities', compact('habilities'));
     }
 
     public static function listar(){
         $habilities = Hability::paginate(18);
-        return view('habilitieslist', compact('habilities'));
+        return view('hability.habilitieslist', compact('habilities'));
     }
 
     public static function create(array $data){
@@ -37,7 +37,7 @@ class Hability extends Model
     }
 
     public static function crear(){
-        return view('habilitycreate');
+        return view('hability.habilitycreate');
     }
 
     public static function upgrade(array $data, Hability $hability){
@@ -51,7 +51,7 @@ class Hability extends Model
     }
 
     public static function editarInfo(Hability $hability){
-        return view('habilityedit', compact('hability'));
+        return view('hability.habilityedit', compact('hability'));
     }
 
     

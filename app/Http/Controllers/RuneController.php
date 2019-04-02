@@ -8,69 +8,53 @@ use App\Rune;
 class RuneController extends Controller
 {
     public function index() {
-        $runes = Rune::paginate(12);
-
-        return view('runes', compact('runes'));
+        return Rune::listaUserNormal();
     }
 
     public function show(Rune $rune) {
-        return view('rune', compact('rune'));
+        return Rune::informacionIndividual($rune);
     }
 
     public function list() {
-        $runes = Rune::paginate(20);
-
-        return view('runeslist', compact('runes'));
+        return Rune::listaUserAdmin();
     }
 
     public function create() {
-        return view('championcreate');
+        return Rune::PagCrear();
     }
 
-    public function store(){
-
+    public function store(){ // Crear runa
+        // La validacion se debe de hacer en el controlador
         $data = request()->validate([
-            'name' => ['required', 'unique:champions,name'],
-            'rol' => 'required',
-            'title' => 'required',
-            'location' => 'required'
+            'name' => ['required', 'unique:runes,name'],
+            'type' => 'required',
+            'row' => 'required'
         ], [
             'name.required' => 'El campo nombre está mal',
-            'rol.required' => 'El campo rol está mal',
-            'title.required' => 'El campo titulo está mal',
-            'location.required' => 'El campo localizacion está mal'
+            'type.required' => 'El campo tipo está mal',
+            'row.required' => 'El campo fila está mal'
         ]);
-        
-        Champion::create([
-            'name' => $data['name'],
-            'rol' => $data['rol'],
-            'title' => $data['title'],
-            'location' => $data['location']
-        ]);
-
-        return redirect()->route('champions');
+        return Rune::crear($data);
     }
 
-    public function edit(Champion $champion){
-        return view('championedit', compact('champion'));
+    public function edit(Rune $rune){
+        return Rune::editarInfo($rune);
     }
 
-    public function update(Champion $champion){
+    public function update(Rune $rune){
         $data = request()->validate([
-            'name' => 'required|unique:champions,name,'.$champion->id,
-            'rol' => 'required',
-            'title' => 'required',
-            'location' => 'required'
+            'name' => 'required|unique:runes,name,'.$rune->id,
+            'type' => 'required',
+            'row' => 'required'
         ]);
-
-        $champion->update($data);
-
-        return redirect()->route('champion.details', ['champion' => $champion]);
+        return Rune::actualizar($data, $rune);
     }
 
-    public function destroy(Champion $champion){
-        $champion->delete();
+    public function destroy(Rune $rune){
+        return Rune::eliminar($rune);
+    }
 
-        return redirect()->route('champions');
+    public function listAlphabetical(){
+        return Rune::ordenarAlfabeticamente();
     }
 }

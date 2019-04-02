@@ -21,8 +21,6 @@
         {{ method_field('PUT') }} <!-- Para que este formulario sea de tipo PUT y así poder actualizar -->
         {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
-        <!-- Formulario para añadir nuevo campeon -->
-
         <label for="name">Nombre:</label>
         <input type="text" name="name" id="name" placeholder="Nombre" value="{{old('name', $champion->name)}}">
         <br>
