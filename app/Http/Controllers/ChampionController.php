@@ -10,8 +10,15 @@ use App\Hability;
 class ChampionController extends Controller
 {   
     
-    public function index() {
-        return Champion::listaUserNormal();
+    public function index(Request $request) {
+        $check = $request->input('order');
+
+        if ($check != null) {
+            return Champion::ordenarAlfabeticamente();
+        }
+        else {
+            return Champion::listaUserNormal();
+        }
     }
 
     public function show(Champion $champion) {
@@ -60,7 +67,7 @@ class ChampionController extends Controller
         return Champion::eliminar($champion);
     }
 
-    public function listAlphabetical(){
+    public function listAlphabetical(Request $request){
         return Champion::ordenarAlfabeticamente();
     }
 }

@@ -25,7 +25,7 @@ class Champion extends Model
         $champion->title = $data['title'];
         $champion->location = $data['location'];
         $champion->save();
-        return redirect()->route('champion.champions');
+        return redirect()->route('champions');
     }
 
     public static function actualizar(array $data, Champion $champion){
@@ -51,7 +51,8 @@ class Champion extends Model
 
     public static function listaUserNormal(){
         $champions = Champion::paginate(12);
-        return view('champion.champions', compact('champions'));
+        $check = null;
+        return view('champion.champions', compact('champions', 'check'));
     }
 
     public static function informacionIndividual(Champion $champion){
@@ -60,7 +61,8 @@ class Champion extends Model
 
     public static function ordenarAlfabeticamente(){
         $champions = Champion::orderBy('name', 'ASC')->paginate(12);
-        return view('champion.champions', compact('champions'));
+        $check = "checked";
+        return view('champion.champions', compact('champions', 'check'));
     }
 
     public static function editarInfo(Champion $champion){
