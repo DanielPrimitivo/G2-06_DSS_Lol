@@ -50,8 +50,10 @@ class Champion extends Model
     }
 
     public static function listaUserNormal(){
-        $champions = Champion::paginate(12);
-        $check = null;
+        $check = "off";
+        $champions = Champion::paginate(12)->appends([
+            'order' => $check
+        ]);
         return view('champion.champions', compact('champions', 'check'));
     }
 
@@ -60,8 +62,11 @@ class Champion extends Model
     }
 
     public static function ordenarAlfabeticamente(){
-        $champions = Champion::orderBy('name', 'ASC')->paginate(12);
         $check = "checked";
+        $champions = Champion::orderBy('name', 'ASC')->paginate(12)->appends([
+            'order' => $check
+        ]);
+        
         return view('champion.champions', compact('champions', 'check'));
     }
 

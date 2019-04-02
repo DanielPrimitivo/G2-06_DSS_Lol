@@ -14,18 +14,10 @@
 		<div class="col align-self-center">
 			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
 				<div class="form-check">
-					@if ($check != null) 
-						<form method="GET" action="{{ route('champions.order') }}">
-							<input class="form-check-checkbox" type="checkbox" id="order" name="order" {{ $check }}>
-							<input class="form-check-button" type="submit" value="hola">
-						</form>
-					@else 
-						<form method="GET" action="{{ route('champions') }}">
-						<input class="form-check-checkbox" type="checkbox" id="order" name="order" {{ $check }}>
-							<input class="form-check-button" type="submit" value="hola">
-						</form>
-					@endif
-						
+					<form method="GET" action="{{ route('champions') }}">
+					<input class="form-check-checkbox" type="checkbox" id="order" name="order" {{ $check }}>
+						<input class="form-check-button" type="submit" value="Ordenar alfabeticamente">
+					</form>
 				</div>
 			</div>
 		</div>
@@ -45,8 +37,7 @@
 	<div class="row justify-content-center align-items-center">
 		<div class="col-6">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
-
-					{{ $champions->links() }}
+				{{ $champions->links() }}
 			</div>
 		</div>
 	</div>
