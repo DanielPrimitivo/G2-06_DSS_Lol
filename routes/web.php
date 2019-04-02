@@ -47,15 +47,17 @@ Route::get('/habilidades', 'HabilityController@index')->name('habilities');
 
 Route::get('/habilidades/lista', 'HabilityController@list')->name('habilities.list');
 
-Route::get('/habilidades/crear', 'HabilityController@store')->name('hability.create.post');
+Route::post('/habilidades/crear', 'HabilityController@store')->name('hability.create.post');
 
 Route::get('/habilidades/nueva', 'HabilityController@create')->name('hability.create');
 
 Route::get('/habilidades/{hability}/editar', 'HabilityController@edit')->name('hability.edit');
 
+Route::put('/habilidades/{hability}', 'HabilityController@update')->name('hability.update');
+
 Route::get('/habilidades/{hability}', 'HabilityController@show')->name('hability.details');
 
-Route::get('/habilidades/{hability}', 'HabilityController@destroy')->name('hability.destroy');
+Route::delete('/habilidades/{hability}', 'HabilityController@destroy')->name('hability.destroy');
 
 
 

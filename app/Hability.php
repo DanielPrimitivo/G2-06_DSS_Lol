@@ -22,7 +22,7 @@ class Hability extends Model
 
     public static function listar(){
         $habilities = Hability::paginate(18);
-        return view('habilitiesList', compact('habilities'));
+        return view('habilitieslist', compact('habilities'));
     }
 
     public static function create(array $data){
@@ -36,6 +36,12 @@ class Hability extends Model
 
     public static function crear(){
         return view('habilitycreate');
+    }
+
+    public static function upgrade(array $data, Hability $hability){
+        $hability->update($data);
+        dd($hability);
+        return redirect()->route('hability.details', ['hability' => $hability]);
     }
 
     public static function eliminar(Hability $hability){

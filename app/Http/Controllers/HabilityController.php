@@ -41,6 +41,15 @@ class HabilityController extends Controller
         return Hability::create($data);
     }
 
+    public function update(Hability $hability){
+        $data = request()->validate([
+            'name' => 'required|unique:habilities,name,'.$hability->id,
+            'description' => 'required',
+            'champion_id' => 'required'
+        ]);
+        return Hability::upgrade($data, $hability);
+    }
+
     public function edit(Hability $hability){
         return Hability::editarInfo($hability);
     }
