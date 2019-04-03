@@ -31,26 +31,26 @@
                 <!-- Formulario para añadir nuevo campeon -->
 
                 <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
-                    <div class="col-sm-10">
+                    <label for="name" class="col-sm-3 col-form-label falign">Nombre</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="rol" class="col-sm-2 col-form-label">Rol</label>
-                    <div class="col-sm-10">
+                    <label for="rol" class="col-sm-3 col-form-label falign">Rol</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" name="rol" id="rol" placeholder="Rol" value="{{old('rol')}}">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="title" class="col-sm-2 col-form-label">Título</label>
-                    <div class="col-sm-10">
+                    <label for="title" class="col-sm-3 col-form-label falign">Título</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" name="title" id="title" placeholder="Titulo" value="{{old('title')}}">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="location" class="col-sm-2 col-form-label">Localización</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-3 col-form-label falign">Localización</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" name="location" id="location" placeholder="Localizacion" value="{{old('location')}}">
                     </div>
                 </div>
