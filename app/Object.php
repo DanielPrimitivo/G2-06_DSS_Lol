@@ -38,18 +38,61 @@ class Object extends Model
         return view('object.objectslist', compact('objects'));
     }
 
+    private static function arrayType(){
+        $allObjects = Object::all();
+        $types = [];
+        foreach($allObjects as $object){
+            $types[$object->type] = $object->type;
+        }
+        return $types;
+    }
+
+    private static function arraySubtype(){
+        $allObjects = Object::all();
+        $subtypes = [];
+        foreach($allObjects as $object){
+            $subtypes[$object->subtype] = $object->subtype;
+        }
+        return $subtypes;
+    }
+
     public static function listaUserNormal(){
+        $object = new Object();
         $objects = Object::paginate(12);
-        return view('object.objects', compact('objects'));
+        $types = $object->arrayType();
+        $subtypes = $object->arraySubtype();
+        $type = $subtype = 'Ninguno';
+        return view('object.objects', compact('objects', 'types', 'subtypes', 'type', 'subtype'));
+    }
+
+    public static function listaUserNormalOrderByType($type){
+        $object = new Object();
+        $types = $object->arrayType();
+        $subtypes = $object->arraySubtype();
+        $objects = Object::where('type', '=', $type)->paginate(12);
+        $subtype = 'Ninguno';
+        return view('object.objects', compact('objects', 'types', 'subtypes', 'type', 'subtype'));
+    }
+
+    public static function listaUserNormalOrderBySubtype($subtype){
+        $object = new Object();
+        $types = $object->arrayType();
+        $subtypes = $object->arraySubtype();
+        $objects = Object::where('subtype', '=', $subtype)->paginate(12);
+        $type = 'Ninguno';
+        return view('object.objects', compact('objects', 'types', 'subtypes', 'type', 'subtype'));
+    }
+
+    public static function listaUserNormalOrderByTwo($type, $subtype){
+        $object = new Object();
+        $types = $object->arrayType();
+        $subtypes = $object->arraySubtype();
+        $objects = Object::where('subtype', '=', $subtype)->where('type', '=', $type)->paginate(12);
+        return view('object.objects', compact('objects', 'types', 'subtypes', 'type', 'subtype'));
     }
 
     public static function informacionIndividual(Object $object){
         return view('object.object', compact('object'));
-    }
-
-    public static function ordenarAlfabeticamente(){
-        $objects = Object::orderBy('name', 'ASC')->paginate(12);
-        return view('object.objects', compact('objects'));
     }
 
     public static function editarInfo(Object $object){

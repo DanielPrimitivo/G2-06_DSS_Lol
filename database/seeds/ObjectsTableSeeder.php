@@ -19,7 +19,8 @@ class ObjectsTableSeeder extends Seeder
                 'price' => $obj['price'],
                 'description' => $obj['description'],
                 'type' => $obj['type'],
-                'subtype' => $obj['subtype']
+                'subtype' => $obj['subtype'],
+                'icon' => $obj['icon']
             ]);
             $object->save();
         }

@@ -64,7 +64,6 @@ class Champion extends Model
         $champions = Champion::orderBy('name', 'ASC')->paginate(12)->appends([
             'order' => $check
         ]);
-        
         return view('champion.champions', compact('champions', 'check'));
     }
 

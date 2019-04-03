@@ -7,8 +7,19 @@ use App\Object;
 
 class ObjectController extends Controller
 {
-    public function index() {
-        return Object::listaUserNormal();
+    public function index(Request $request) {
+        $type = $request->input('type');
+        $subtype = $request->input('subtype');
+        if(($type == 'Ninguno' && $subtype == 'Ninguno') || ($type == null && $subtype == null)){
+            return Object::listaUserNormal();
+        }else if($type != 'Ninguno' && $subtype == 'Ninguno'){
+            return Object::listaUserNormalOrderByType($type);
+        }else if($type == 'Ninguno' && $subtype != 'Ninguno'){
+            return Object::listaUserNormalOrderBySubtype($subtype);
+        }else{
+            return Object::listaUserNormalOrderByTwo($type, $subtype);
+        }
+        
     }
 
     public function show(Object $object) {
