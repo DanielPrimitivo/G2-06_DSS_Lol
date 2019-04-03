@@ -7,7 +7,11 @@
 	<h1>Campeon</h1>
 
 	<ul>
-        	<li>Nombre campeon {{$champion->name}}</li>
+			<img src="{{$champion->icon}}">
+        	<li>Nombre: {{$champion->name}}</li>
+			<li>Rol: {{$champion->rol}}</li>
+			<li>Titulo: {{$champion->title}}</li>
+			<li>Localizacion: {{$champion->location}}</li>
 	</ul>
 
 @endsection
