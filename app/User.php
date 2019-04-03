@@ -35,8 +35,9 @@ class User extends Authenticatable
     ];
 
 
-    public static function informacionIndividual(User $user){
-        return view('user.user', compact('user'));
+    public static function informacionIndividual(Int $id){
+        $usu = User::find($id);
+        return view('user.user', compact('usu'));
     }
 
     public static function principal(){
@@ -49,9 +50,10 @@ class User extends Authenticatable
         return view('user.userslist', compact('users'));
     }
 
-    public static function eliminar(User $user){
-        $champ_users = DB::table('champion_user')->where('user_id','=', $user->id)->delete();
-        $user->delete();
+    public static function eliminar(Int $id){
+        $champ_users = DB::table('champion_user')->where('user_id','=', $id)->delete();
+        $us = User::find($id);
+        $us->delete();
         return redirect()->route('users.list');
     }
 

@@ -16,15 +16,15 @@
 			<div class="col-3"></div>
 			<div class="col-4">
 				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<a href="{{ route('user.details',['user' => $user])}}">{{ $user->name }}</a>
+					<a href="{{ route('user.details',['user' => $user->id])}}">{{ $user->name }}</a>
 				</div>
 			</div>
 			<div class="col-1">
 				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<form action="{{ route('user.destroy', $user) }}" method="POST">
+					<form action="{{ route('user.destroy', $user->id) }}" method="POST">
 						{{ method_field('DELETE') }}
 						{{ csrf_field() }}
-						<button type="submit" class="btn btn-danger">Eliminar</button>
+						<button type="submit" class="btn btn-danger">Eliminar {{$user->id}}</button>
 					</form>
 				</div>
 			</div>

@@ -7,9 +7,9 @@
 	<h1>Usuario</h1>
 
 	<ul>
-        <li>Nombre: {{$user->name}}</li>
-	<li>E-mail: {{$user->email}}</li>
-	<li>Tipo de usuario: {{$user->type}}</li>
+        <li>Nombre: {{$usu->name}}</li>
+	<li>E-mail: {{$usu->email}}</li>
+	<li>Tipo de usuario: {{$usu->type}}</li>
 
 	</ul>
 

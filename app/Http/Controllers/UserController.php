@@ -14,16 +14,16 @@ class UserController extends Controller
         return User::principal();
     }
 
-    public function show(User $usuario) {
-        return User::informacionIndividual($usuario);
+    public function show(Int $id) {
+        return User::informacionIndividual($id);
     }
 
     public function list() {
         return User::listar();
     }
 
-    public function destroy(User $usuario){
-        return User::eliminar($usuario);
+    public function destroy(Int $id){
+        return User::eliminar($id);
     }
 
 }
