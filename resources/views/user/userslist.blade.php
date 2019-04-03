@@ -11,26 +11,27 @@
 			</div>
 		</div>
 	</div>
-	<div class="row justify-content-center align-items-center space">
-		@foreach ($users as $user)
-			<div class="col-3"></div>
-			<div class="col-4">
+	<div class="space"></div>
+	
+	@foreach ($users as $user)
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-4 col-sm-6 col-12">
 				<div class="features-icons-item mx-auto mb-2 mt-2">
 					<a href="{{ route('user.details',['user' => $user->id])}}">{{ $user->name }}</a>
 				</div>
 			</div>
-			<div class="col-1">
+			<div class="col-lg-1 col-sm-2 col-3">
 				<div class="features-icons-item mx-auto mb-2 mt-2">
 					<form action="{{ route('user.destroy', $user->id) }}" method="POST">
 						{{ method_field('DELETE') }}
 						{{ csrf_field() }}
-						<button type="submit" class="btn btn-danger">Eliminar {{$user->id}}</button>
+						<button type="submit" class="btn btn-danger">Eliminar</button>
 					</form>
 				</div>
 			</div>
-			<div class="col-3"></div>
-		@endforeach
-	</div>
+		</div>
+	@endforeach
+	
 	<div class="row justify-content-center align-items-center">
 		<div class="col-4">
 			<div class="features-icons-item mx-auto mb-2 mt-2">

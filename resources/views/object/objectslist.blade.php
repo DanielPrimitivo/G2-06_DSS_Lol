@@ -3,9 +3,6 @@
 @section('title', "Objetos")
 
 @section('content')
-	<p>
-		<a href="{{ route('object.create')}}">Nuevo objeto</a>
-	</p>
 
 	<div class="row justify-content-center">
 		<div class="col align-self-center">
@@ -14,20 +11,32 @@
 			</div>
 		</div>
 	</div>
-	<div class="row justify-content-center align-items-center space">
-		@foreach ($objects as $object)
-			<div class="col-3"></div>
-			<div class="col-4">
+
+	<div class="space"></div>
+
+	<div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-2 mt-2">
+				<a class="btn btn-success" href="{{ route('object.create')}}">Nuevo objeto</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="littlespace"></div>
+	
+	@foreach ($objects as $object)
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-4 col-sm-6 col-12">
 				<div class="features-icons-item mx-auto mb-2 mt-2">
 					<a href="{{ route('object.details',['object' => $object])}}">{{ $object->name }}</a>
 				</div>
 			</div>
-			<div class="col-1">
+			<div class="col-lg-1 col-sm-2 col-3">
 				<div class="features-icons-item mx-auto mb-2 mt-2">
 					<a href="{{ route('object.edit',['object' => $object])}}" class="btn btn-primary"> Editar</a>
 				</div>
 			</div>
-			<div class="col-1">
+			<div class="col-lg-1 col-sm-2 col-3">
 				<div class="features-icons-item mx-auto mb-2 mt-2">
 					<form action="{{ route('object.destroy', $object) }}" method="POST">
 						{{ method_field('DELETE') }}
@@ -36,9 +45,9 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-3"></div>
-		@endforeach
-	</div>
+		</div>
+	@endforeach
+	
 	<div class="row justify-content-center align-items-center space">
 		<div class="col-4">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
