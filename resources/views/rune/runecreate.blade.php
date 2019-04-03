@@ -4,7 +4,13 @@
 
 @section('content')
 
-	<h1>Crear runa</h1>
+	<div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-2 mt-2">
+				<h1>Crear runa</h1>
+			</div>
+		</div>
+	</div>
 
     @if($errors->any())
         <div class="alert alert-danger">
@@ -17,21 +23,37 @@
         </div>
     @endif
 
-	<form method="POST" action="{{route('rune.create.post')}}">
-        {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
+    <div class="row justify-content-center align-items-center space">
+        <div class="col-md-8 col-lg-6">
+            <form method="POST" action="{{route('rune.create.post')}}">
+                {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
-        <!-- Formulario para añadir nuevo campeon -->
+                <!-- Formulario para añadir nuevo campeon -->
 
-        <label for="name">Nombre:</label>
-        <input type="text" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
-        <br>
-        <label for="type">Tipo:</label>
-        <input type="text" name="type" id="type" placeholder="Tipo" value="{{old('type')}}">
-        <br>
-        <label for="row">Subtipo:</label>
-        <input type="number" name="row" id="row" placeholder="Fila (numero)" value="{{old('row')}}">
-        <br>
-        <button type="submit">Crear runa</button>
-    </form>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label falign">Nombre</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="type" class="col-sm-3 col-form-label falign">Tipo</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="type" id="type" placeholder="Tipo" value="{{old('type')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="row" class="col-sm-3 col-form-label falign">Subtipo</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" name="row" id="row" placeholder="Fila (numero)" value="{{old('row')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Crear runa</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 @endsection

@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
 		<div class="col align-self-center">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
-				<h1>Crear campeon</h1>
+				<h1>Crear campeón</h1>
 			</div>
 		</div>
 	</div>
