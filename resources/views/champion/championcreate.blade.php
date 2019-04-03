@@ -4,7 +4,13 @@
 
 @section('content')
 
-	<h1>Crear campeon</h1>
+    <div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-2 mt-2">
+				<h1>Crear campeon</h1>
+			</div>
+		</div>
+	</div>
 
     @if($errors->any())
         <div class="alert alert-danger">
@@ -17,24 +23,44 @@
         </div>
     @endif
 
-	<form method="POST" action="{{route('champion.create.post')}}">
-        {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
+    <div class="row justify-content-center align-items-center space">
+        <div class="col-md-8 col-lg-6">
+            <form method="POST" action="{{route('champion.create.post')}}">
+                {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
-        <!-- Formulario para añadir nuevo campeon -->
+                <!-- Formulario para añadir nuevo campeon -->
 
-        <label for="name">Nombre:</label>
-        <input type="text" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
-        <br>
-        <label for="rol">Rol:</label>
-        <input type="text" name="rol" id="rol" placeholder="Rol" value="{{old('rol')}}">
-        <br>
-        <label for="title">Título:</label>
-        <input type="text" name="title" id="title" placeholder="Titulo" value="{{old('title')}}">
-        <br>
-        <label for="location">Localización:</label>
-        <input type="text" name="location" id="location" placeholder="Localizacion" value="{{old('location')}}">
-        <br>
-        <button type="submit">Crear campeón</button>
-    </form>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="rol" class="col-sm-2 col-form-label">Rol</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="rol" id="rol" placeholder="Rol" value="{{old('rol')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="title" class="col-sm-2 col-form-label">Título</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Titulo" value="{{old('title')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="location" class="col-sm-2 col-form-label">Localización</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="location" id="location" placeholder="Localizacion" value="{{old('location')}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Crear campeón</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 @endsection

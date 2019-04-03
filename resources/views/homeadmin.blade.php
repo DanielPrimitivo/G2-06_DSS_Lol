@@ -51,7 +51,7 @@
 			        <div class="img d-flex"></div>
               <h3>Habilidades</h3>
             </a>
-            <p class="lead mb-0">Podemos ver, editar y eliminar.</p>
+            <p class="lead mb-0">Podemos ver, modificar y eliminar.</p>
           </div>
         </div>
 		<div class="col-lg-4">
