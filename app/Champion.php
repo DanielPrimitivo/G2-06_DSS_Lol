@@ -56,7 +56,8 @@ class Champion extends Model
     }
 
     public static function informacionIndividual(Champion $champion){
-        return view('champion.champion', compact('champion'));
+        $habilities = Hability::where('champion_id', '=', $champion->id)->get();
+        return view('champion.champion', compact('champion', 'habilities'));
     }
 
     public static function ordenarAlfabeticamente(){

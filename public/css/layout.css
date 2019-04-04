@@ -82,6 +82,51 @@ header.masthead h1 {
 	font-size: 5rem;
 }
 
+.img_champion {
+	background: url("../img/champion.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
+.img_object {
+	background: url("../img/object.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
+.img_rune {
+	background: url("../img/rune.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
+.img_hability {
+	background: url("../img/hability.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
+.img_user {
+	background: url("../img/user.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
 .img {
 	background: url("../img/bg-masthead.jpg") no-repeat center center;
 	height: 15rem;
@@ -91,7 +136,27 @@ header.masthead h1 {
 	margin-bottom: 1rem;
 }
 
-.img:hover {
+.img_champion:hover {
+	border: 0.5rem solid black;
+	border-radius: 1.5rem;
+}
+
+.img_object:hover {
+	border: 0.5rem solid black;
+	border-radius: 1.5rem;
+}
+
+.img_rune:hover {
+	border: 0.5rem solid black;
+	border-radius: 1.5rem;
+}
+
+.img_hability:hover {
+	border: 0.5rem solid black;
+	border-radius: 1.5rem;
+}
+
+.img_user:hover {
 	border: 0.5rem solid black;
 	border-radius: 1.5rem;
 }

@@ -11,7 +11,7 @@
               <i class="icon-screen-desktop m-auto text-primary"></i>
 			      </div>-->
             <a href="{{ route('champions') }}" class="lin">
-              <div class="img d-flex">
+              <div class="img_champion d-flex">
               </div>
               <h3>Campeones</h3>
             </a>
@@ -24,7 +24,7 @@
               <i class="icon-layers m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('objects') }}" class="lin">
-              <div class="img d-flex"></div>
+              <div class="img_object d-flex"></div>
               <h3>Objetos</h3>
             </a>
             <p class="lead mb-0">Podremos ver todos los objetos junto a una breve descripción</p>
@@ -36,7 +36,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('runes') }}" class="lin">
-			        <div class="img d-flex"></div>
+			        <div class="img_rune d-flex"></div>
               <h3>Runas</h3>
             </a>
             <p class="lead mb-0">Se verá todas las runas e incluso una pequeña descripción para que no te pierdas</p>

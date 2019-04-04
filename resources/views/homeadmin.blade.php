@@ -11,7 +11,7 @@
               <i class="icon-screen-desktop m-auto text-primary"></i>
 			      </div>-->
             <a href="{{ route('champions.list') }}" class="lin">
-              <div class="img d-flex">
+              <div class="img_champion d-flex">
               </div>
               <h3>Campeones</h3>
             </a>
@@ -24,7 +24,7 @@
               <i class="icon-layers m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('objects.list') }}" class="lin">
-              <div class="img d-flex"></div>
+              <div class="img_object d-flex"></div>
               <h3>Objetos</h3>
             </a>
             <p class="lead mb-0">Podemos ver, crear, modificar y eliminar.</p>
@@ -36,7 +36,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('runes.list') }}" class="lin">
-			        <div class="img d-flex"></div>
+			        <div class="img_rune d-flex"></div>
               <h3>Runas</h3>
             </a>
             <p class="lead mb-0">Podemos ver, crear, modificar y eliminar.</p>
@@ -48,7 +48,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('habilities.list') }}" class="lin">
-			        <div class="img d-flex"></div>
+			        <div class="img_hability d-flex"></div>
               <h3>Habilidades</h3>
             </a>
             <p class="lead mb-0">Podemos ver, modificar y eliminar.</p>
@@ -60,7 +60,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('users.list') }}" class="lin">
-			        <div class="img d-flex"></div>
+			        <div class="img_user d-flex"></div>
               <h3>Usuarios</h3>
             </a>
             <p class="lead mb-0">Podemos ver y eliminar.</p>

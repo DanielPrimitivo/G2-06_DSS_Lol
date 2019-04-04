@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="description" class="col-sm-3 col-form-label falign">Título</label>
+                    <label for="description" class="col-sm-3 col-form-label falign">Descripcion</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" name="description" id="description" placeholder="Descripcion" value="{{old('description')}}">
                     </div>
