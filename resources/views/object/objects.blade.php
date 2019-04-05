@@ -10,39 +10,51 @@
 			</div>
 		</div>
 	</div>
-	<form method="GET" action="{{ route('objects') }}">
-		<label for="type">Elige el tipo:</label>
-		<select name="type" id="type">
-			@if($type == 'Ninguno')
-				<option value="Ninguno" selected>Ninguno</option>
-			@else
-				<option value="Ninguno">Ninguno</option>
-			@endif
-			@foreach ($types as $t)
-				@if($type == $t)
-					<option value="{{$t}}" selected>{{$t}}</option>
-				@else
-					<option value="{{$t}}">{{$t}}</option>
-				@endif
-			@endforeach
-		</select>
-		<label for="subtype">Elige el subtipo:</label>
-		<select name="subtype" id="subtype">
-			@if($type == 'Ninguno')
-				<option value="Ninguno" selected>Ninguno</option>
-			@else
-				<option value="Ninguno">Ninguno</option>
-			@endif
-			@foreach ($subtypes as $st)
-				@if($subtype == $st)
-					<option value="{{$st}}" selected>{{$st}}</option>
-				@else
-					<option value="{{$st}}">{{$st}}</option>
-				@endif
-			@endforeach
-		</select>
-		<input class="btn btn-primary" type="submit" value="Buscar">
-	</form>
+	<div class="row justify-content-center align-items-center space">
+        <div class="col-md-12 col-lg-12">
+			<form method="GET" action="{{ route('objects') }}">
+				<div class="form-group row">
+					<label for="type" class="col-sm-2 col-form-label falign">Elige el tipo</label>
+					<div class="col-sm-3">
+						<select name="type" id="type" class="form-control">
+							@if($type == 'Ninguno')
+								<option value="Ninguno" selected>Ninguno</option>
+							@else
+								<option value="Ninguno">Ninguno</option>
+							@endif
+							@foreach ($types as $t)
+								@if($type == $t)
+									<option value="{{$t}}" selected>{{$t}}</option>
+								@else
+									<option value="{{$t}}">{{$t}}</option>
+								@endif
+							@endforeach
+						</select>
+					</div>
+					<label for="subtype" class="col-sm-2 col-form-label falign">Elige el subtipo</label>
+					<div class="col-sm-3">
+						<select name="subtype" id="subtype" class="form-control">
+							@if($type == 'Ninguno')
+								<option value="Ninguno" selected>Ninguno</option>
+							@else
+								<option value="Ninguno">Ninguno</option>
+							@endif
+							@foreach ($subtypes as $st)
+								@if($subtype == $st)
+									<option value="{{$st}}" selected>{{$st}}</option>
+								@else
+									<option value="{{$st}}">{{$st}}</option>
+								@endif
+							@endforeach
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<input class="btn btn-primary" type="submit" value="Buscar">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 	<div class="row justify-content-center space">
 		@foreach ($objects as $object)
 			<div class="col-lg-2 col-md-3 col-sm-4 col-5">
