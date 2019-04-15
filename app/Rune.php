@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rune extends Model
 {
+    public function runePages(){
+        return $this->belongsToMany('App\RunePage');
+    }
+
     protected $fillable = array('name', 'type', 'row');
 
     public static function crear(array $data){
