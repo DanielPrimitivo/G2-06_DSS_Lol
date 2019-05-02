@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateObjectsTable extends Migration
+class CreateBuildsUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateObjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('objects', function (Blueprint $table) {
+        Schema::create('builds_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->integer('price')->nullable();
-            $table->string('description');
-            $table->string('type');
-            $table->string('subtype');
-            $table->string('icon')->nullable(); // Ruta de acceso a la imagen
+            $table->integer('user_id');
+            $table->integer('build_id');
+            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('build_id')->references('id')->on('build');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateObjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objects');
+        Schema::dropIfExists('builds_users');
     }
 }

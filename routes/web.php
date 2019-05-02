@@ -11,7 +11,7 @@
 |
 */
 
-/** ************************** RUTA INICIAL ************************** */
+/** ************************** ROUTES INITIALS ************************** */
 
 
 Route::get('/', function () {
@@ -22,7 +22,7 @@ Route::get('/admin', function () {
     return view('homeadmin');
 });
 
-/** ************************** RUTAS CAMPEONES ************************** */
+/** ************************** ROUTES CHAMPIONS ************************** */
 
 Route::get('/campeones', 'ChampionController@index')->name('champions');
 
@@ -43,7 +43,7 @@ Route::put('/campeones/{champion}', 'ChampionController@update')->name('champion
 
 Route::delete('/campeones/{champion}', 'ChampionController@destroy')->name('champion.destroy');
 
-/** ************************** RUTAS HABILIDADES ************************** */
+/** ************************** ROUTES HABILITIES ************************** */
 
 Route::get('/habilidades', 'HabilityController@index')->name('habilities');
 
@@ -61,7 +61,7 @@ Route::get('/habilidades/{hability}', 'HabilityController@show')->name('hability
 
 Route::delete('/habilidades/{hability}', 'HabilityController@destroy')->name('hability.destroy');
 
-/** ************************** RUTAS USUARIOS ************************** */
+/** ************************** ROUTES USERS ************************** */
 
 Route::get('/usuarios', 'UserController@index')->name('users');
 
@@ -71,7 +71,7 @@ Route::get('/usuarios/{user}', 'UserController@show')->name('user.details');
 
 Route::delete('/usuarios/{user}', 'UserController@destroy')->name('user.destroy');
 
-/** ************************** RUTAS OBJETOS ************************** */
+/** ************************** ROUTES OBJECTS ************************** */
 
 Route::get('/objetos', 'ObjectController@index')->name('objects');
 
@@ -90,7 +90,7 @@ Route::put('/objetos/{object}', 'ObjectController@update')->name('object.update'
 
 Route::delete('/objetos/{object}', 'ObjectController@destroy')->name('object.destroy');
 
-/** ************************** RUTAS RUNAS ************************** */
+/** ************************** ROUTES RUNES ************************** */
 
 Route::get('/runas', 'RuneController@index')->name('runes');
 
@@ -108,4 +108,42 @@ Route::get('/runas/{rune}/editar', 'RuneController@edit')->name('rune.edit');
 Route::put('/runas/{rune}', 'RuneController@update')->name('rune.update');
 
 Route::delete('/runas/{rune}', 'RuneController@destroy')->name('rune.destroy');
+
+/** ************************** ROUTES SPELL ************************** */
+
+Route::get('/hechizo', 'SpellController@index')->name('spells');
+
+Route::get('/hechizo/{spell}', 'SpellController@show')
+    ->where('spell', '[0-9]+')->name('spell.details');
+
+Route::get('/hechizo/lista', 'SpellController@list')->name('spells.list');
+
+Route::get('/hechizo/nuevo', 'SpellController@create')->name('spell.create');
+
+Route::post('/hechizo/crear', 'SpellController@store')->name('spell.create.post');
+
+Route::get('/hechizo/{spell}/editar', 'SpellController@edit')->name('spell.edit');
+
+Route::put('/hechizo/{spell}', 'SpellController@update')->name('spell.update');
+
+Route::delete('/hechizo/{spell}', 'SpellController@destroy')->name('spell.destroy');
+
+/** ************************** ROUTES BUILDS ************************** */
+
+Route::get('/build', 'BuildController@index')->name('builds');
+
+Route::get('/build/{build}', 'BuildController@show')
+    ->where('build', '[0-9]+')->name('build.details');
+
+Route::get('/hechizo/lista', 'BuildController@list')->name('builds.list');
+
+Route::get('/hechizo/nuevo', 'BuildController@create')->name('build.create');
+
+Route::post('/hechizo/crear', 'BuildController@store')->name('build.create.post');
+
+Route::get('/hechizo/{build}/editar', 'BuildController@edit')->name('build.edit');
+
+Route::put('/hechizo/{build}', 'BuildController@update')->name('build.update');
+
+Route::delete('/hechizo/{build}', 'BuildController@destroy')->name('build.destroy');
 

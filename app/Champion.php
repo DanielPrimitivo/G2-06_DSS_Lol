@@ -14,6 +14,10 @@ class Champion extends Model
         return $this->hasMany('App\Hability');
     }
 
+    public function build(){
+        return $this->belongsTo('App\Build');
+    }
+
     public function users(){
         return $this->belongsToMany('App\User');
     }

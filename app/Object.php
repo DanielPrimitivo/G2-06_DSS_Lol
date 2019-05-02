@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Object extends Model
 {
+    public function builds(){
+        return $this->belongsToMany('App\Build');
+    }
+
     protected $fillable = array('name', 'price', 'description', 'type', 'subtype');
 
     public static function crear(array $data){
