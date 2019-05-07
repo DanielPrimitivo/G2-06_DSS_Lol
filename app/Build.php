@@ -26,11 +26,52 @@ class Build extends Model
 
     public static function crear(array $data){
         $build = new Build();
-        $build->object_name = $data['object_name'];
         $build->champion_name = $data['champion_name'];
         $build->page_rune_id = $data['page_rune_id'];
-        $build->spell_name = $data['spell_name'];
         $build->save();
+
+        $object1 = DB::table('objects')->where('name', '=', $data['object1'])->get();
+        $object2 = DB::table('objects')->where('name', '=', $data['object2'])->get();
+        $object3 = DB::table('objects')->where('name', '=', $data['object3'])->get();
+        $object4 = DB::table('objects')->where('name', '=', $data['object4'])->get();
+        $object5 = DB::table('objects')->where('name', '=', $data['object5'])->get();
+        $object6 = DB::table('objects')->where('name', '=', $data['object6'])->get();
+
+        $spell1 = DB::table('spells')->where('name', '=', $data['spell1'])->get();
+        $spell2 = DB::table('spells')->where('name', '=', $data['spell2'])->get();
+
+        
+        $build = Build::all()->last();
+        DB::table('builds_objects')->insert([
+            'object_id' => $object1->id,
+            'build_id' => $build->id]);
+        DB::table('builds_objects')->insert([
+            'object_id' => $object2->id,
+            'build_id' => $build->id]);
+        DB::table('builds_objects')->insert([
+            'object_id' => $object3->id,
+            'build_id' => $build->id]);
+        DB::table('builds_objects')->insert([
+            'object_id' => $object4->id,
+            'build_id' => $build->id]);
+        DB::table('builds_objects')->insert([
+            'object_id' => $object5->id,
+            'build_id' => $build->id]);
+        DB::table('builds_objects')->insert([
+            'object_id' => $object6->id,
+            'build_id' => $build->id]);
+
+        DB::table('builds_spells')->insert([
+            'spell_id' => $spell1->id,
+            'build_id' => $build->id]);
+        DB::table('builds_spells')->insert([
+            'spell_id' => $spell2->id,
+            'build_id' => $build->id]);
+
+        DB::table('builds_users')->insert([
+            'user_id' => $data['user'],
+            'build_id' => $build->id]);
+
         return redirect()->route('builds');
     }
 
