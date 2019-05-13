@@ -111,39 +111,39 @@ Route::delete('/runas/{rune}', 'RuneController@destroy')->name('rune.destroy');
 
 /** ************************** ROUTES SPELL ************************** */
 
-Route::get('/hechizo', 'SpellController@index')->name('spells');
+Route::get('/hechizos', 'SpellController@index')->name('spells');
 
-Route::get('/hechizo/{spell}', 'SpellController@show')
+Route::get('/hechizos/{spell}', 'SpellController@show')
     ->where('spell', '[0-9]+')->name('spell.details');
 
-Route::get('/hechizo/lista', 'SpellController@list')->name('spells.list');
+Route::get('/hechizos/lista', 'SpellController@list')->name('spells.list');
 
-Route::get('/hechizo/nuevo', 'SpellController@create')->name('spell.create');
+Route::get('/hechizos/nuevo', 'SpellController@create')->name('spell.create');
 
-Route::post('/hechizo/crear', 'SpellController@store')->name('spell.create.post');
+Route::post('/hechizos/crear', 'SpellController@store')->name('spell.create.post');
 
-Route::get('/hechizo/{spell}/editar', 'SpellController@edit')->name('spell.edit');
+Route::get('/hechizos/{spell}/editar', 'SpellController@edit')->name('spell.edit');
 
-Route::put('/hechizo/{spell}', 'SpellController@update')->name('spell.update');
+Route::put('/hechizos/{spell}', 'SpellController@update')->name('spell.update');
 
-Route::delete('/hechizo/{spell}', 'SpellController@destroy')->name('spell.destroy');
+Route::delete('/hechizos/{spell}', 'SpellController@destroy')->name('spell.destroy');
 
 /** ************************** ROUTES BUILDS ************************** */
 
-Route::get('/build', 'BuildController@index')->name('builds');
+Route::get('/builds', 'BuildController@index')->name('builds');
 
-Route::get('/build/{build}', 'BuildController@show')
+Route::get('/builds/{build}', 'BuildController@show')
     ->where('build', '[0-9]+')->name('build.details');
 
-Route::get('/hechizo/lista', 'BuildController@list')->name('builds.list');
+Route::get('/builds/lista', 'BuildController@list')->name('builds.list');
 
-Route::get('/hechizo/nuevo', 'BuildController@create')->name('build.create');
+Route::get('/builds/nuevo', 'BuildController@create')->name('build.create');
 
-Route::post('/hechizo/crear', 'BuildController@store')->name('build.create.post');
+Route::post('/builds/crear', 'BuildController@store')->name('build.create.post');
 
-Route::get('/hechizo/{build}/editar', 'BuildController@edit')->name('build.edit');
+Route::get('/builds/{build}/editar', 'BuildController@edit')->name('build.edit');
 
-Route::put('/hechizo/{build}', 'BuildController@update')->name('build.update');
+Route::put('/builds/{build}', 'BuildController@update')->name('build.update');
 
-Route::delete('/hechizo/{build}', 'BuildController@destroy')->name('build.destroy');
+Route::delete('/builds/{build}', 'BuildController@destroy')->name('build.destroy');
 

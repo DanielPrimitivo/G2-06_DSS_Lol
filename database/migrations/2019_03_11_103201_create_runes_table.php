@@ -18,6 +18,7 @@ class CreateRunesTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->integer('row');
+            $table->string('icon')->nullable(); // Ruta de acceso a la imagen
             $table->timestamps();
         });
     }

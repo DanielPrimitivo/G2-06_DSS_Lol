@@ -42,6 +42,18 @@
             <p class="lead mb-0">Se verá todas las runas e incluso una pequeña descripción para que no te pierdas</p>
           </div>
         </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <!--<div class="features-icons-icon d-flex">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>-->
+            <a href="{{ route('spells') }}" class="lin">
+			        <div class="img_rune d-flex"></div>
+              <h3>Hechizos</h3>
+            </a>
+            <p class="lead mb-0">Se verá todos los hechizos e incluso una pequeña descripción para que no te pierdas</p>
+          </div>
+        </div>
       </div>
 
 @endsection
