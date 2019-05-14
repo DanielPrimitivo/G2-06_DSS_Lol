@@ -30,7 +30,7 @@ class SpellController extends Controller
             'description' => 'required'
         ], [
             'name.required' => 'El campo nombre está mal',
-            'description.required' => 'El campo tipo está mal'
+            'description.required' => 'El campo descripción está mal'
         ]);
         return Spell::crear($data);
     }

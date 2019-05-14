@@ -15,6 +15,8 @@ class CreateBuildsTable extends Migration
     {
         Schema::create('builds', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('icon')->nullable(); // Ruta de acceso a la imagen
             $table->integer('page_rune_id');
             $table->integer('champion_id');
             $table->foreign('page_rune_id')->references('id')->on('rune_runePage');
