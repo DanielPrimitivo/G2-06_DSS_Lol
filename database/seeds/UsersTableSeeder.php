@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
                 'name' => $us['name'],
                 'email' => $us['email'],
                 'email_verified_at' => $us['email'],
-                'password' => $us['password'],
+                'password' => bcrypt($us['password']),
                 'type' => $us['type']
             ]);
             $user->save();

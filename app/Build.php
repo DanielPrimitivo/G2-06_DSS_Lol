@@ -22,6 +22,10 @@ class Build extends Model
         return $this->belongsToMany('App\Spell');
     }
 
+    public function users(){
+        return $this->belongsToMany('App\User');
+    }
+
     protected $fillable = array('object_name', 'champion_name', 'page_rune_id', 'spell_name');
 
     public static function crear(array $data){
@@ -30,15 +34,15 @@ class Build extends Model
         $build->page_rune_id = $data['page_rune_id'];
         $build->save();
 
-        $object1 = DB::table('objects')->where('name', '=', $data['object1'])->get();
-        $object2 = DB::table('objects')->where('name', '=', $data['object2'])->get();
-        $object3 = DB::table('objects')->where('name', '=', $data['object3'])->get();
-        $object4 = DB::table('objects')->where('name', '=', $data['object4'])->get();
-        $object5 = DB::table('objects')->where('name', '=', $data['object5'])->get();
-        $object6 = DB::table('objects')->where('name', '=', $data['object6'])->get();
+        $object1 = Object::where('name', '=', $data['object1'])->get();
+        $object2 = Object::where('name', '=', $data['object2'])->get();
+        $object3 = Object::where('name', '=', $data['object3'])->get();
+        $object4 = Object::where('name', '=', $data['object4'])->get();
+        $object5 = Object::where('name', '=', $data['object5'])->get();
+        $object6 = Object::where('name', '=', $data['object6'])->get();
 
-        $spell1 = DB::table('spells')->where('name', '=', $data['spell1'])->get();
-        $spell2 = DB::table('spells')->where('name', '=', $data['spell2'])->get();
+        $spell1 = Spell::where('name', '=', $data['spell1'])->get();
+        $spell2 = Spell::where('name', '=', $data['spell2'])->get();
 
         
         $build = Build::all()->last();
@@ -82,9 +86,9 @@ class Build extends Model
 
     public static function PagCrear(){
         $champions = Champion::All();
-        $page_runes = runePages::All();
-        $spells = Spells::All();
-        $objects = Objects::All();
+        $page_runes = RunePage::All();
+        $spells = Spell::All();
+        $objects = Object::All();
         return view('build.buildcreate', compact($champions, $page_runes, $spells, $objects));
     }
 
@@ -104,7 +108,11 @@ class Build extends Model
     }
 
     public static function informacionIndividual(Build $build){
-        return view('build.build', compact('build'));
+        $champion = $build->champions;
+        $objects = $build->objects;
+        $runesPage = $build->runesPages;
+        $spells = $build->spells;
+        return view('build.build', compact('build', 'champion', 'objects', 'runesPage', 'spells'));
     }
 
     public static function ordenarAlfabeticamente(){

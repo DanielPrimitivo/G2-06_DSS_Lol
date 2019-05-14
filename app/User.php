@@ -18,11 +18,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'type'
     ];
 
     public function champions(){
         return $this->belongsToMany('App\Champion');
+    }
+
+    public function builds(){
+        return $this->belongsToMany('App\Build');
     }
 
     /**

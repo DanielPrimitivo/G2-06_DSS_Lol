@@ -13,7 +13,7 @@ class CreateRunePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('runePages', function (Blueprint $table) {
+        Schema::create('rune_pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('user_id')->unsigned();
@@ -29,6 +29,6 @@ class CreateRunePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('runePages');
+        Schema::dropIfExists('rune_pages');
     }
 }
