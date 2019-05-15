@@ -148,5 +148,24 @@ Route::put('/builds/{build}', 'BuildController@update')->name('build.update')->m
 
 Route::delete('/builds/{build}', 'BuildController@destroy')->name('build.destroy')->middleware('auth');
 
+/** ************************** ROUTES PAGRUNES ************************** */
+
+Route::get('/pagrunas', 'PageRunesController@index')->name('pagrunes');
+
+Route::get('/pagrunas/{pagrune}', 'PageRunesController@show')
+    ->where('pagrune', '[0-9]+')->name('pagrunes.details');
+
+Route::get('/pagrunas/lista', 'PageRunesController@list')->name('pagrunes.list')->middleware('administrator');
+
+Route::get('/pagrunas/nuevo', 'PageRunesController@create')->name('pagrune.create')->middleware('administrator');
+
+Route::post('/pagrunas/crear', 'PageRunesController@store')->name('pagrune.create.post')->middleware('administrator');
+
+Route::get('/pagrunas/{pagrune}/editar', 'PageRunesController@edit')->name('pagrune.edit')->middleware('administrator');
+
+Route::put('/pagrunas/{pagrune}', 'PageRunesController@update')->name('pagrune.update')->middleware('administrator');
+
+Route::delete('/pagrunas/{pagrune}', 'PageRunesController@destroy')->name('pagrune.destroy')->middleware('administrator');
+
 
 Auth::routes();

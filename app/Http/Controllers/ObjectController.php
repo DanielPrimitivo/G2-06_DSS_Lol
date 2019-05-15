@@ -19,7 +19,6 @@ class ObjectController extends Controller
         }else{
             return Object::listaUserNormalOrderByTwo($type, $subtype);
         }
-        
     }
 
     public function show(Object $object) {

@@ -57,4 +57,8 @@ class Rune extends Model
     public static function editarInfo(Rune $rune){
         return view('rune.runeedit', compact('rune'));
     }
+
+    public static function runesType(String $type){
+        return Rune::where('type', '=', $type)->get();
+    }
 }
