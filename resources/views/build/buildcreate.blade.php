@@ -25,7 +25,7 @@
 
     <div class="row justify-content-center align-items-center space">
         <div class="col-md-8 col-lg-6">
-            <form method="POST" action="{{route('spell.create.post')}}">
+            <form method="POST" action="{{route('build.create.post')}}">
                 {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
                 <!-- Formulario para añadir nueva build -->

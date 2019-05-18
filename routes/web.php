@@ -164,15 +164,17 @@ Route::get('/pagrunas/{pagrune}', 'PageRunesController@show')
 
 Route::get('/pagrunas/lista', 'PageRunesController@list')->name('pagrunes.list')->middleware('administrator');
 
-Route::get('/pagrunas/nuevo', 'PageRunesController@create')->name('pagrune.create')->middleware('administrator');
+Route::get('/pagrunas/nuevo', 'PageRunesController@create')->name('pagrune.create')->middleware('auth');
 
-Route::post('/pagrunas/crear', 'PageRunesController@store')->name('pagrune.create.post')->middleware('administrator');
+Route::post('/pagrunas/crear', 'PageRunesController@store')->name('pagrune.create.post')->middleware('auth');
 
-Route::get('/pagrunas/{pagrune}/editar', 'PageRunesController@edit')->name('pagrune.edit')->middleware('administrator');
+Route::get('/pagrunas/{pagrune}/editar', 'PageRunesController@edit')->name('pagrune.edit')->middleware('auth');
 
-Route::put('/pagrunas/{pagrune}', 'PageRunesController@update')->name('pagrune.update')->middleware('administrator');
+Route::put('/pagrunas/{pagrune}', 'PageRunesController@update')->name('pagrune.update')->middleware('auth');
 
-Route::delete('/pagrunas/{pagrune}', 'PageRunesController@destroy')->name('pagrune.destroy')->middleware('administrator');
+Route::delete('/pagrunas/{pagrune}', 'PageRunesController@destroy')->name('pagrune.destroy')->middleware('auth');
+
+Route::get('/pagrunas/filter', 'PageRunesController@showTypes')->name('pagrune.filter')->middleware('auth');
 
 
 Auth::routes();

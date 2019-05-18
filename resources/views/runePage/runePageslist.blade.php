@@ -51,7 +51,7 @@
 	<div class="row justify-content-center align-items-center space">
 		<div class="col-4">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
-				{{ $spells->links() }}
+				{{ $runePages->links() }}
 			</div>
 		</div>
 	</div>

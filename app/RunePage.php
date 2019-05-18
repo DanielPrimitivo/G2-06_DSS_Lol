@@ -18,7 +18,7 @@ class RunePage extends Model
         return $this->belongsTo('App\Build');
     }
 
-    public function listPageRunes(String $t1, String $t2){
+    public static function listPageRunes(String $t1, String $t2){
         $runes1 = Rune::runesType($t1);
         $runes2 = Rune::runesType($t2);
         $type1 = array();$type2 = array();$type3 = array();
@@ -35,7 +35,7 @@ class RunePage extends Model
             }
         }
         $type5 = $type6 = $runes2; 
-        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6'));  
+        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6', 't1', 't2'));  
     }
 
     protected $fillable = array('name', 'type', 'row');
@@ -79,7 +79,9 @@ class RunePage extends Model
     public static function PagCrear(){
         $type1 = array();$type2 = array();$type3 = array();
         $type4 = array();$type5 = array();$type6 = array();
-        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6'));
+        $t1 = "";
+        $t2 = "";
+        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6', 't1', 't2'));
     }
 
     public static function eliminar(RunePage $pagrune){
