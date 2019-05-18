@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 @if ($t1 != "Ninguno")
-                    <div style="text-align: center" class="form-group row"><h3>{{$t1}}</h3></div>
+                    <div class="form-group row justify-content-center"><h3>{{$t1}}</h3></div>
                 @endif
                 <div class="form-group row">
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 1</label>
@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 @if ($t2 != "Ninguno")
-                    <div style="text-align: center" class="form-group row"><h3>{{$t2}}</h3></div>
+                    <div class="form-group row justify-content-center"><h3>{{$t2}}</h3></div>
                 @endif
                 <div class="form-group row">
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 5</label>
