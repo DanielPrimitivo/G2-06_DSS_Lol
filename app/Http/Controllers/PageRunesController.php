@@ -74,7 +74,7 @@ class PageRunesController extends Controller
         }
         $data = request()->validate($restrictions, $errors);
         $data = array(
-            "name" => $request['name'],
+            'name' => $request['name'],
             'rune_id1' => $request['rune_id1'],
             'rune_id2' => $request['rune_id2'],
             'rune_id3' => $request['rune_id3'],

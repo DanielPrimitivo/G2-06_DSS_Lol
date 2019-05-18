@@ -13,13 +13,13 @@ class CreateRuneRunePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('rune_runePage', function (Blueprint $table) {
+        Schema::create('rune_runePages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('rune_id')->unsigned();
             $table->integer('runePage_id')->unsigned();
             $table->unique('rune_id', 'runePage_id');
             $table->foreign('rune_id')->references('id')->on('runes');
-            $table->foreign('runePage_id')->references('id')->on('runePages');
+            $table->foreign('runePage_id')->references('id')->on('rune_pages');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateRuneRunePageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rune_runePage');
+        Schema::dropIfExists('rune_runePages');
     }
 }

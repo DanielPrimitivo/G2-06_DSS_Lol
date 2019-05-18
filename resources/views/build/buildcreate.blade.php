@@ -1,13 +1,13 @@
 @extends('layout')
 
-@section('title', "Crear hechizo")
+@section('title', "Crear build")
 
 @section('content')
 
 	<div class="row justify-content-center">
 		<div class="col align-self-center">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
-				<h1>Crear hechizo</h1>
+				<h1>Crear build</h1>
 			</div>
 		</div>
 	</div>

@@ -50,22 +50,22 @@ class RunePage extends Model
         $pagrune->save();
         $id = RunePage::all()->last()->id;
 
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id1'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id2'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id3'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id4'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id5'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id6'],
             'runePage_id' => $id]);
 
