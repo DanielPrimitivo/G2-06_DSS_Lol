@@ -10,6 +10,13 @@ class PageRunesController extends Controller
     public function showTypes(Request $request){
         $t1 = $request->input('type1'); // Como se llame a lo que seleccione
         $t2 = $request->input('type2'); // Como se llame a lo que seleccione
+        if($t1 != 'Ninguno' && $t2 != 'Ninguno' && $t1 == $t2){
+            $data = request()->validate([
+                'type1' => 'integer'
+            ], [
+                'type1.integer' => 'Tipo primario y secundario no deben de ser iguales'
+            ]);
+        }
         return RunePage::listPageRunes($t1, $t2);
     }
 
@@ -29,49 +36,44 @@ class PageRunesController extends Controller
         return RunePage::PagCrear();
     }
 
+    private function errorNinguno(String $dato, String $idRuna){
+        if($dato == 'Ninguno'){
+            return ['rune_id'.$idRuna.'.integer' => 'Debes de seleccionar la runa '.$idRuna];
+        }
+    }
+
+    private function retristictionNinguno(String $dato, String $idRuna){
+        if($dato == 'Ninguno'){
+            return ['rune_id'.$idRuna => 'integer'];
+        }
+    }
+
+    public function correcto(array $datos, String $validate){
+        if($validate == 'errors'){
+            $i = 1;
+            $errors = ['name.required' => 'El campo nombre está mal'];
+            foreach($datos as $dato){
+                $errors = array_merge($errors, $this->errorNinguno($dato, strval($i)));
+                
+                $i += 1;
+            }
+            return $errors;
+        }else{
+            $i = 1;
+            $restrictions = ['name' => ['required', 'unique:rune_pages,name']];
+            foreach($datos as $dato){
+                $restrictions = array_merge($restrictions, $this->retristictionNinguno($dato, strval($i)));
+                $i += 1;
+            }
+            return $restrictions;
+        }
+    }
+
     public function store(Request $request){ // Crear runa
         // La validacion se debe de hacer en el controlador
-        $restrictions = ['name' => ['required', 'unique:rune_pages,name']];
-        $errors = ['name.required' => 'El campo nombre está mal'];
-        $error_id1; $error_id2; $error_id3; $error_id4; $error_id5; $error_id6;
-        $restriction_id1; $restriction_id2; $restriction_id3; $restriction_id4; $restriction_id5; $restriction_id6;
-        //$request->input('rune_id1');
-        if($request['rune_id1'] == 'Ninguno'){
-            $restriction_id1 = ['rune_id1' => 'integer'];
-            $error_id1 = ['rune_id1.integer' => 'Debes de seleccionar alguna runa'];
-            array_merge($restrictions, $restriction_id1);
-            array_merge($errors, $error_id1);
-        }
-        if($request['rune_id2'] == 'Ninguno'){
-            $restriction_id2 = ['rune_id2' => 'integer'];
-            $error_id2 = ['rune_id2.integer' => 'Debes de seleccionar alguna runa'];
-            array_merge($restrictions, $restriction_id2);
-            array_merge($errors, $error_id2);
-        }
-        if($request['rune_id3'] == 'Ninguno'){
-            $restriction_id3 = ['rune_id3' => 'integer'];
-            $error_id3 = ['rune_id3.integer' => 'Debes de seleccionar alguna runa'];
-            array_merge($restrictions, $restriction_id3);
-            array_merge($errors, $error_id3);
-        }
-        if($request['rune_id4'] == 'Ninguno'){
-            $restriction_id4 = ['rune_id4' => 'integer'];
-            $error_id4 = ['rune_id4.integer' => 'Debes de seleccionar alguna runa'];
-            array_merge($restrictions, $restriction_id4);
-            array_merge($errors, $error_id4);
-        }
-        if($request['rune_id5'] == 'Ninguno'){
-            $restriction_id5 = ['rune_id5' => 'integer'];
-            $error_id5 = ['rune_id5.integer' => 'Debes de seleccionar alguna runa'];
-            array_merge($restrictions, $restriction_id5);
-            array_merge($errors, $error_id5);
-        }
-        if($request['rune_id6'] == 'Ninguno'){
-            $restriction_id6 = ['rune_id6' => 'integer'];
-            $error_id6 = ['rune_id6.integer' => 'Debes de seleccionar alguna runa'];
-            array_merge($restrictions, $restriction_id6);
-            array_merge($errors, $error_id6);
-        }
+        $datos = array($request['rune_id1'], $request['rune_id2'], $request['rune_id3'], $request['rune_id4'], $request['rune_id5'], $request['rune_id6']);
+        $errors = $this->correcto($datos, "errors");
+        $restrictions = $this->correcto($datos, "");
         $data = request()->validate($restrictions, $errors);
         $data = array(
             'name' => $request['name'],
