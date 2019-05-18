@@ -20,7 +20,7 @@ class RunePage extends Model
         return $this->hasMany('App\Build');
     }
 
-    protected $fillable = array('name');
+    protected $fillable = array('name', 'user_id');
 
     public static function listPageRunes(String $t1, String $t2){
         $runes1 = Rune::runesType($t1);
@@ -50,22 +50,22 @@ class RunePage extends Model
         $pagrune->save();
         $id = RunePage::all()->last()->id;
 
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id1'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id2'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id3'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id4'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id5'],
             'runePage_id' => $id]);
-        DB::table('rune_runePage')->insert([
+        DB::table('rune_runePages')->insert([
             'rune_id' => $data['rune_id6'],
             'runePage_id' => $id]);
 
@@ -86,8 +86,14 @@ class RunePage extends Model
     }
 
     public static function eliminar(RunePage $pagrune){
-        DB::table('rune_runePage')->where('runePage_id', '=', $pagrune->id)->delete();
+        
+        $rune_runePages = DB::table('rune_runePages')->where('runePage_id', '=', $pagrune->id)->delete();
+        $builds = Build::where('page_rune_id', '=', $pagrune->id)->get();
+        foreach($builds as $build) {
+            Build::eliminar($build);
+        }
         $pagrune->delete();
+        
         return redirect()->route('pagrunes.list');
     }
 

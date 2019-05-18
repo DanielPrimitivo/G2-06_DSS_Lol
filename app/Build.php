@@ -68,8 +68,7 @@ class Build extends Model
         DB::table('build_user')->insert([
             'user_id' => Auth::User()->id,
             'build_id' => $build->id]);
-
-            return redirect()->route('builds');
+        return redirect()->route('builds');
     }
 
     public static function actualizar(array $data, Build $build){
@@ -86,6 +85,9 @@ class Build extends Model
     }
 
     public static function eliminar(Build $build){
+        DB::table('build_object')->where('build_id', '=', $build->id)->delete();
+        DB::table('build_spell')->where('build_id', '=', $build->id)->delete();
+        DB::table('build_user')->where('build_id', '=', $build->id)->delete();
         $build->delete();
         return redirect()->route('builds.list');
     }
