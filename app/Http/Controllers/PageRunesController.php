@@ -31,7 +31,7 @@ class PageRunesController extends Controller
 
     public function store(Request $request){ // Crear runa
         // La validacion se debe de hacer en el controlador
-        $restrictions = ['name' => ['required', 'unique:pagesrunes,name']];
+        $restrictions = ['name' => ['required', 'unique:rune_pages,name']];
         $errors = ['name.required' => 'El campo nombre está mal'];
         $error_id1; $error_id2; $error_id3; $error_id4; $error_id5; $error_id6;
         $restriction_id1; $restriction_id2; $restriction_id3; $restriction_id4; $restriction_id5; $restriction_id6;
@@ -73,7 +73,16 @@ class PageRunesController extends Controller
             array_merge($errors, $error_id6);
         }
         $data = request()->validate($restrictions, $errors);
-        return RunePage::crear($request);
+        $data = array(
+            "name" => $request['name'],
+            'rune_id1' => $request['rune_id1'],
+            'rune_id2' => $request['rune_id2'],
+            'rune_id3' => $request['rune_id3'],
+            'rune_id4' => $request['rune_id4'],
+            'rune_id5' => $request['rune_id5'],
+            'rune_id6' => $request['rune_id6']
+        );
+        return RunePage::crear($data);
     }
 
     public function edit(RunePage $pagrune){

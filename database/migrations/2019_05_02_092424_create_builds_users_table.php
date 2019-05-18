@@ -17,8 +17,8 @@ class CreateBuildsUsersTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('build_id');
-            $table->foreign('user_id')->references('id')->on('user');
-            $table->foreign('build_id')->references('id')->on('build');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('build_id')->references('id')->on('builds');
             $table->timestamps();
         });
     }

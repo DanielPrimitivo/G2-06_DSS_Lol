@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class RunePage extends Model
 {
@@ -18,6 +20,8 @@ class RunePage extends Model
         return $this->belongsTo('App\Build');
     }
 
+    protected $fillable = array('name');
+
     public static function listPageRunes(String $t1, String $t2){
         $runes1 = Rune::runesType($t1);
         $runes2 = Rune::runesType($t2);
@@ -26,9 +30,9 @@ class RunePage extends Model
         foreach($runes1 as $rune){
             if($rune->row == 1){
                 $type1[] = $rune;
-            }else if($rune->row == 1){
+            }else if($rune->row == 2){
                 $type2[] = $rune;
-            }else if($rune->row == 1){
+            }else if($rune->row == 3){
                 $type3[] = $rune;
             }else{
                 $type4[] = $rune;
@@ -38,15 +42,12 @@ class RunePage extends Model
         return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6', 't1', 't2'));  
     }
 
-    protected $fillable = array('name', 'type', 'row');
-
-    public static function crear(Request $data){
+    public static function crear(array $data){
         $pagrune = new RunePage();
         $pagrune->name = $data['name'];
         $user = Auth::User();
         $pagrune->user_id = $user->id;
-        $pagerune->save();
-
+        $pagrune->save();
         $id = RunePage::all()->last()->id;
 
         DB::table('rune_runePage')->insert([
@@ -73,7 +74,7 @@ class RunePage extends Model
 
     public static function actualizar(array $data, RunePage $pagrune){
         $pagrune->update($data);
-        return redirect()->route('pagrune.details', ['pagrune' => $pagrune]);
+        return redirect()->route('pagrune.details', ['runePage' => $runePage]);
     }
 
     public static function PagCrear(){
