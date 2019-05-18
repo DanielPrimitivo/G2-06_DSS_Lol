@@ -26,11 +26,11 @@ class Build extends Model
         return $this->belongsToMany('App\User');
     }
 
-    protected $fillable = array('object_name', 'champion_name', 'page_rune_id', 'spell_name');
+    protected $fillable = array('object_name', 'champion_id', 'page_rune_id', 'spell_name');
 
     public static function crear(array $data){
         $build = new Build();
-        $build->champion_name = $data['champion_name'];
+        $build->champion_id = $data['champion_id'];
         $build->page_rune_id = $data['page_rune_id'];
         $build->save();
 
@@ -89,7 +89,7 @@ class Build extends Model
         $page_runes = RunePage::All();
         $spells = Spell::All();
         $objects = Object::All();
-        return view('build.buildcreate', compact($champions, $page_runes, $spells, $objects));
+        return view('build.buildcreate', compact('champions', 'page_runes', 'spells', 'objects'));
     }
 
     public static function eliminar(Build $build){

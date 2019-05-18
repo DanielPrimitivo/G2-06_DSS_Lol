@@ -35,7 +35,7 @@ class RunePage extends Model
             }
         }
         $type5 = $type6 = $runes2; 
-        return view('build.buildcreate', compact('type1','type2','type3','type4','type5','type6'));  
+        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6'));  
     }
 
     protected $fillable = array('name', 'type', 'row');
@@ -55,7 +55,7 @@ class RunePage extends Model
     }
 
     public static function PagCrear(){
-        return view('pagrune.pagrunecreate');
+        return view('runePage.runePagecreate');
     }
 
     public static function eliminar(RunePage $pagrune){
@@ -64,25 +64,25 @@ class RunePage extends Model
     }
 
     public static function listaUserAdmin(){
-        $pagrunes = RunePage::paginate(20);
-        return view('pagrune.pagruneslist', compact('pagrunes'));
+        $runePages = RunePage::paginate(20);
+        return view('runePage.runePageslist', compact('runePages'));
     }
 
     public static function listaUserNormal(){
-        $pagrunes = RunePage::paginate(12);
-        return view('pagrune.pagrunes', compact('pagrunes'));
+        $runePages = RunePage::paginate(12);
+        return view('runePage.runePages', compact('runePages'));
     }
 
-    public static function informacionIndividual(RunePage $pagrune){
-        return view('pagrune.pagrune', compact('pagrune'));
+    public static function informacionIndividual(RunePage $runePage){
+        return view('runePage.runePage', compact('runePage'));
     }
 
     public static function ordenarAlfabeticamente(){
-        $pagrunes = RunePage::orderBy('name', 'ASC')->paginate(12);
-        return view('pagrune.pagrunes', compact('pagrunes'));
+        $runePages = RunePage::orderBy('name', 'ASC')->paginate(12);
+        return view('runePage.runePages', compact('runePages'));
     }
 
-    public static function editarInfo(RunePage $pagrune){
-        return view('pagrune.pagruneedit', compact('pagrune'));
+    public static function editarInfo(RunePage $runePage){
+        return view('runePage.runePageedit', compact('runePage'));
     }
 }

@@ -28,7 +28,7 @@
             <form method="POST" action="{{route('spell.create.post')}}">
                 {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
-                <!-- Formulario para añadir nuevo hechizo -->
+                <!-- Formulario para añadir nueva build -->
 
                 <div class="form-group row">
                     <label for="name" class="col-sm-3 col-form-label falign">Nombre</label>
@@ -37,14 +37,118 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="type" class="col-sm-3 col-form-label falign">Descripción</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Campeón</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="description" id="description" placeholder="Descripción" value="{{old('description')}}">
+                        <select class="form-control" name="champion_id" id="champion_id">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($champions as $champion)
+                                <option value="{{$champion->id}}">{{$champion->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Pag. Runas</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="page_rune_id" id="page_rune_id">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($page_runes as $page_rune)
+                                <option value="{{$page_rune->id}}">{{$page_rune->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Hechizo 1</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="spell_id1" id="spell_id1">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($spells as $spell)
+                                <option value="{{$spell->id}}">{{$spell->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Hechizo 2</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="spell_id2" id="spell_id2">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($spells as $spell)
+                                <option value="{{$spell->id}}">{{$spell->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Objeto 1</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="object_id1" id="object_id1">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($objects as $object)
+                                <option value="{{$object->id}}">{{$object->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Objeto 2</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="object_id2" id="object_id2">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($objects as $object)
+                                <option value="{{$object->id}}">{{$object->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Objeto 3</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="object_id3" id="object_id3">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($objects as $object)
+                                <option value="{{$object->id}}">{{$object->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Objeto 4</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="object_id4" id="object_id4">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($objects as $object)
+                                <option value="{{$object->id}}">{{$object->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Objeto 5</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="object_id5" id="object_id5">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($objects as $object)
+                                <option value="{{$object->id}}">{{$object->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Objeto 6</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="object_id6" id="object_id6">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($objects as $object)
+                                <option value="{{$object->id}}">{{$object->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary">Crear hechizo</button>
+                        <button type="submit" class="btn btn-primary">Crear build</button>
                 </div>
             </form>
         </div>

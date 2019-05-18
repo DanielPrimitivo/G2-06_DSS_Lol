@@ -16,6 +16,7 @@ class CreateRunePagesTable extends Migration
         Schema::create('rune_pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('icon')->nullable(); // Ruta de acceso a la imagen
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
