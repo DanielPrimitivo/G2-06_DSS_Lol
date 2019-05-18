@@ -40,12 +40,34 @@ class RunePage extends Model
 
     protected $fillable = array('name', 'type', 'row');
 
-    public static function crear(array $data){
-        /*$rune = new Rune();
-        $rune->name = $data['name'];
-        $rune->type = $data['type'];
-        $rune->row = $data['row'];
-        $rune->save();*/
+    public static function crear(Request $data){
+        $pagrune = new RunePage();
+        $pagrune->name = $data['name'];
+        $user = Auth::User();
+        $pagrune->user_id = $user->id;
+        $pagerune->save();
+
+        $id = RunePage::all()->last()->id;
+
+        DB::table('rune_runePage')->insert([
+            'rune_id' => $data['rune_id1'],
+            'runePage_id' => $id]);
+        DB::table('rune_runePage')->insert([
+            'rune_id' => $data['rune_id2'],
+            'runePage_id' => $id]);
+        DB::table('rune_runePage')->insert([
+            'rune_id' => $data['rune_id3'],
+            'runePage_id' => $id]);
+        DB::table('rune_runePage')->insert([
+            'rune_id' => $data['rune_id4'],
+            'runePage_id' => $id]);
+        DB::table('rune_runePage')->insert([
+            'rune_id' => $data['rune_id5'],
+            'runePage_id' => $id]);
+        DB::table('rune_runePage')->insert([
+            'rune_id' => $data['rune_id6'],
+            'runePage_id' => $id]);
+
         return redirect()->route('pagrunes');
     }
 
@@ -55,7 +77,9 @@ class RunePage extends Model
     }
 
     public static function PagCrear(){
-        return view('runePage.runePagecreate');
+        $type1 = array();$type2 = array();$type3 = array();
+        $type4 = array();$type5 = array();$type6 = array();
+        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6'));
     }
 
     public static function eliminar(RunePage $pagrune){

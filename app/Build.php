@@ -34,46 +34,36 @@ class Build extends Model
         $build->page_rune_id = $data['page_rune_id'];
         $build->save();
 
-        $object1 = Object::where('name', '=', $data['object1'])->get();
-        $object2 = Object::where('name', '=', $data['object2'])->get();
-        $object3 = Object::where('name', '=', $data['object3'])->get();
-        $object4 = Object::where('name', '=', $data['object4'])->get();
-        $object5 = Object::where('name', '=', $data['object5'])->get();
-        $object6 = Object::where('name', '=', $data['object6'])->get();
-
-        $spell1 = Spell::where('name', '=', $data['spell1'])->get();
-        $spell2 = Spell::where('name', '=', $data['spell2'])->get();
-
         
-        $build = Build::all()->last();
+        $build_id = Build::all()->last()->id;
         DB::table('builds_objects')->insert([
-            'object_id' => $object1->id,
-            'build_id' => $build->id]);
+            'object_id' => $data['object_id1'],
+            'build_id' => $build_id]);
         DB::table('builds_objects')->insert([
-            'object_id' => $object2->id,
-            'build_id' => $build->id]);
+            'object_id' => $data['object_id2'],
+            'build_id' => $build_id]);
         DB::table('builds_objects')->insert([
-            'object_id' => $object3->id,
-            'build_id' => $build->id]);
+            'object_id' => $data['object_id3'],
+            'build_id' => $build_id]);
         DB::table('builds_objects')->insert([
-            'object_id' => $object4->id,
-            'build_id' => $build->id]);
+            'object_id' => $data['object_id4'],
+            'build_id' => $build_id]);
         DB::table('builds_objects')->insert([
-            'object_id' => $object5->id,
-            'build_id' => $build->id]);
+            'object_id' => $data['object_id5'],
+            'build_id' => $build_id]);
         DB::table('builds_objects')->insert([
-            'object_id' => $object6->id,
-            'build_id' => $build->id]);
+            'object_id' => $data['object_id6'],
+            'build_id' => $build_id]);
 
         DB::table('builds_spells')->insert([
-            'spell_id' => $spell1->id,
-            'build_id' => $build->id]);
+            'spell_id' => $data['spell_id1'],
+            'build_id' => $build_id]);
         DB::table('builds_spells')->insert([
-            'spell_id' => $spell2->id,
-            'build_id' => $build->id]);
+            'spell_id' => $data['spell_id2'],
+            'build_id' => $build_id]);
 
         DB::table('builds_users')->insert([
-            'user_id' => $data['user'],
+            'user_id' => Auth::User()->id,
             'build_id' => $build->id]);
 
         return redirect()->route('builds');
