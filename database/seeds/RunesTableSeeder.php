@@ -17,7 +17,8 @@ class RunesTableSeeder extends Seeder
             $rune = new Rune([
                 'name' => $ru['name'],
                 'type' => $ru['type'],
-                'row' => $ru['row']
+                'row' => $ru['row'],
+                'icon' => $ru['icon']
             ]);
             $rune->save();
         }
