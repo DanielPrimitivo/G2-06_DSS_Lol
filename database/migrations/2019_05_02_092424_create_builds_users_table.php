@@ -13,7 +13,7 @@ class CreateBuildsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('builds_users', function (Blueprint $table) {
+        Schema::create('build_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('build_id');
@@ -30,6 +30,6 @@ class CreateBuildsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('builds_users');
+        Schema::dropIfExists('build_user');
     }
 }

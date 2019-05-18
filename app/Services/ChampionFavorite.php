@@ -1,42 +1,45 @@
 <?php
 namespace App\Services;
-use Illuminate\Support\Facades\DB;
+use DB;
+use Illuminate\Support\Facades\Auth;
+use App\Build;
 
 class ChampionFavorite{
-    public static function createBuild($user, $champion, $pag_rune, $spells, $objects){
+    public static function createBuild($name, $user, $champion, $pag_rune, $spells, $objects){
         $rollback = false;
         DB::beginTransaction();
         try {
-            $champion_name = Champion::find($champion)->$name;
-            $data = array(
-                'champion_name' => $champion_name,
-                'pag_rune' => $pag_rune,
-                'object1' => $objects[0],
-                'object2' => $objects[1],
-                'object3' => $objects[2],
-                'object4' => $objects[3],
-                'object5' => $objects[4],
-                'object6' => $objects[5],
-                'spell1' => $spells[0],
-                'spell2' => $spells[1],
-                'user' => $user
+            $data = array('name' => $name,
+                'champion_id' => $champion,
+                'page_rune_id' => $pag_rune,
+                'object_id1' => $objects[0],
+                'object_id2' => $objects[1],
+                'object_id3' => $objects[2],
+                'object_id4' => $objects[3],
+                'object_id5' => $objects[4],
+                'object_id6' => $objects[5],
+                'spell_id1' => $spells[0],
+                'spell_id2' => $spells[1]
             );
-            $build = Build::crear($data);
+            
             if(DB::table('champion_user')->where('champion_id', '=', $champion, 'and', 'user_id', '=', $user)->count() == 0){
                 DB::table('champion_user')->insert([
                     'champion_id' => $champion,
                     'user_id' => $user
                 ]);
             }
+                    
+            Build::crear($data);
         }catch(Exception $e){
+            dd("exception");
             $rollback = true;
         }finally{
             if($rollback){
                 DB::rollback();
-                return null;
+                return redirect()->route('home');
             }else{
                 DB::commit();
-                return true;
+                return redirect()->route('builds');
             }
         }
     }

@@ -16,8 +16,8 @@ class RunePage extends Model
         return $this->belongsToMany('App\Rune');
     }
 
-    public function build(){
-        return $this->belongsTo('App\Build');
+    public function builds(){
+        return $this->hasMany('App\Build');
     }
 
     protected $fillable = array('name');
@@ -50,22 +50,22 @@ class RunePage extends Model
         $pagrune->save();
         $id = RunePage::all()->last()->id;
 
-        DB::table('rune_runePages')->insert([
+        DB::table('rune_runePage')->insert([
             'rune_id' => $data['rune_id1'],
             'runePage_id' => $id]);
-        DB::table('rune_runePages')->insert([
+        DB::table('rune_runePage')->insert([
             'rune_id' => $data['rune_id2'],
             'runePage_id' => $id]);
-        DB::table('rune_runePages')->insert([
+        DB::table('rune_runePage')->insert([
             'rune_id' => $data['rune_id3'],
             'runePage_id' => $id]);
-        DB::table('rune_runePages')->insert([
+        DB::table('rune_runePage')->insert([
             'rune_id' => $data['rune_id4'],
             'runePage_id' => $id]);
-        DB::table('rune_runePages')->insert([
+        DB::table('rune_runePage')->insert([
             'rune_id' => $data['rune_id5'],
             'runePage_id' => $id]);
-        DB::table('rune_runePages')->insert([
+        DB::table('rune_runePage')->insert([
             'rune_id' => $data['rune_id6'],
             'runePage_id' => $id]);
 
@@ -86,6 +86,7 @@ class RunePage extends Model
     }
 
     public static function eliminar(RunePage $pagrune){
+        DB::table('rune_runePage')->where('runePage_id', '=', $pagrune->id)->delete();
         $pagrune->delete();
         return redirect()->route('pagrunes.list');
     }

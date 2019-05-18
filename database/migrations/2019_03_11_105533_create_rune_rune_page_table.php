@@ -13,7 +13,7 @@ class CreateRuneRunePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('rune_runePages', function (Blueprint $table) {
+        Schema::create('rune_runePage', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('rune_id')->unsigned();
             $table->integer('runePage_id')->unsigned();

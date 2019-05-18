@@ -13,7 +13,7 @@ class CreateBuildsSpellsTable extends Migration
      */
     public function up()
     {
-        Schema::create('builds_spells', function (Blueprint $table) {
+        Schema::create('build_spell', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('spell_id');
             $table->integer('build_id');
@@ -30,6 +30,6 @@ class CreateBuildsSpellsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('builds_spells');
+        Schema::dropIfExists('build_spell');
     }
 }

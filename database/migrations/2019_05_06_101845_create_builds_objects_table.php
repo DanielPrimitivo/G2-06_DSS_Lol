@@ -13,7 +13,7 @@ class CreateBuildsObjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('builds_objects', function (Blueprint $table) {
+        Schema::create('build_object', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('object_id');
             $table->integer('build_id');
@@ -30,6 +30,6 @@ class CreateBuildsObjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('builds_users');
+        Schema::dropIfExists('build_user');
     }
 }
