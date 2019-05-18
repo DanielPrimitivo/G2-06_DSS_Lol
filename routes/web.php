@@ -23,6 +23,13 @@ Route::get('/admin', function () {
     return view('homeadmin');
 })->middleware('administrator');
 
+/** ************************** ROUTES LEGAL ************************** */
+Route::get('/advice', function () { return view('advice'); });
+Route::get('/about', function () { return view('about'); });
+Route::get('/politicy', function () { return view('politicy'); });
+Route::get('/contact', function () { return view('contact'); });
+Route::get('/terms', function () { return view('terms'); });
+
 /** ************************** ROUTES CHAMPIONS ************************** */
 
 Route::get('/campeones', 'ChampionController@index')->name('champions');
