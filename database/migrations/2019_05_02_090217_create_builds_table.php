@@ -19,7 +19,7 @@ class CreateBuildsTable extends Migration
             $table->string('icon')->nullable(); // Ruta de acceso a la imagen
             $table->integer('page_rune_id');
             $table->integer('champion_id');
-            $table->foreign('page_rune_id')->references('id')->on('rune_runePages');
+            $table->foreign('page_rune_id')->references('id')->on('rune_pages');
             $table->foreign('champion_id')->references('id')->on('champions');
             $table->timestamps();
         });

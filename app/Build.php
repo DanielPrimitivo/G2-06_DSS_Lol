@@ -36,6 +36,7 @@ class Build extends Model
         $build->name = $data['name'];
         $build->champion_id = $data['champion_id'];
         $build->page_rune_id = $data['page_rune_id'];
+        //dd($build);
         $build->save();
         
         $build_id = Build::all()->last()->id;

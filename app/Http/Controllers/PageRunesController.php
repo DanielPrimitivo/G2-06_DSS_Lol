@@ -90,11 +90,11 @@ class PageRunesController extends Controller
     }
 
     public function update(RunePage $pagrune){
-        $data = request()->validate([
+        /*$data = request()->validate([
             'name' => 'required|unique:pagesrunes,name,'.$pagrune->id,
             'type' => 'required',
             'row' => 'required'
-        ]);
+        ]);*/
         return RunePage::actualizar($data, $pagrune);
     }
 

@@ -27,7 +27,7 @@ class BuildController extends Controller
 
     public function store(Request $request){ // Crear build
         // La validacion se debe de hacer en el controlador
-        $restrictions = ['name' => ['required', 'unique:rune_pages,name']];
+        $restrictions = ['name' => ['required', 'unique:builds,name']];
         $errors = ['name.required' => 'El campo nombre está mal'];
         $error_champion; $error_spell1; $error_spell2; $error_pagerune;
         $error_id1; $error_id2; $error_id3; $error_id4; $error_id5; $error_id6;
@@ -40,12 +40,23 @@ class BuildController extends Controller
             array_merge($errors, $error_id1);
         }
         $data = request()->validate($restrictions, $errors);
-        
+        /*$data = array('name' => $request['name'],
+        'champion_id' => $request['champion_id'],
+        'page_rune_id' => $request['page_rune_id'],
+        'object_id1' => $request['object_id1'],
+        'object_id2' => $request['object_id2'],
+        'object_id3' => $request['object_id3'],
+        'object_id4' => $request['object_id4'],
+        'object_id5' => $request['object_id5'],
+        'object_id6' => $request['object_id6'],
+        'spell_id1' => $request['spell_id1'],
+        'spell_id2' => $request['spell_id2'],);*/
         $spells = array($request['spell_id1'], $request['spell_id2']);
         $objects = array($request['object_id1'], $request['object_id2'], $request['object_id3'],
         $request['object_id4'], $request['object_id5'], $request['object_id6']);
         return ChampionFavorite::createBuild($request['name'], Auth::User()->id, $request['champion_id'],
                 $request['page_rune_id'], $spells,$objects);
+        //return Build::crear($data);
 
     }
 
@@ -54,13 +65,10 @@ class BuildController extends Controller
     }
 
     public function update(Build $build){
-        $data = request()->validate([
+        /*$data = request()->validate([
             'name' => 'required|unique:builds,name,'.$build->id,
-            'object_name' => 'required',
-            'champion_name' => 'required',
-            'page_rune_id' => 'required',
-            'spell_name' => 'required'
-        ]);
+            
+        ]);*/
         return Build::actualizar($data, $build);
     }
 
