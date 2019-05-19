@@ -18,8 +18,8 @@ class CreateRuneRunePageTable extends Migration
             $table->integer('rune_id')->unsigned();
             $table->integer('runePage_id')->unsigned();
             $table->unique('id', 'rune_id', 'runePage_id');
-            $table->foreign('rune_id')->references('id')->on('runes');
-            $table->foreign('runePage_id')->references('id')->on('rune_pages');
+            $table->foreign('rune_id')->references('id')->on('runes')->onDelete('cascade');
+            $table->foreign('runePage_id')->references('id')->on('rune_pages')->onDelete('cascade');
             $table->timestamps();
         });
     }

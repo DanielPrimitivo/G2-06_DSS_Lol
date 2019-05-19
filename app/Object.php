@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Object extends Model
 {
@@ -33,6 +34,15 @@ class Object extends Model
     }
 
     public static function eliminar(Object $object){
+        $buildObjects = DB::table('build_object')->where('object_id', '=', $object->id)->get();
+        $antID = -1;
+        foreach($buildObjects as $buildObject){
+            $buildID = $buildObject->build_id;
+            if($buildID != $antID){
+                Build::find($buildID)->delete();
+                $antID = $buildID;
+            }
+        }
         $object->delete();
         return redirect()->route('objects.list');
     }

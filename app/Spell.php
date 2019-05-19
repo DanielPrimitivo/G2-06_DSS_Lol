@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Spell extends Model
 {
@@ -30,6 +31,15 @@ class Spell extends Model
     }
 
     public static function eliminar(Spell $spell){
+        $buildSpells = DB::table('build_spell')->where('spell_id', '=', $spell->id)->get();
+        $antID = -1;
+        foreach($buildSpells as $buildSpell){
+            $buildID = $buildSpell->build_id;
+            if($buildID != $antID){
+                Build::find($buildID)->delete();
+                $antID = $buildID;
+            }
+        }
         $spell->delete();
         return redirect()->route('spells.list');
     }

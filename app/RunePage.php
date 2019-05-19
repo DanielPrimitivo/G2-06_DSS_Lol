@@ -86,14 +86,7 @@ class RunePage extends Model
     }
 
     public static function eliminar(RunePage $pagrune){
-        
-        $rune_runePages = DB::table('rune_runePages')->where('runePage_id', '=', $pagrune->id)->delete();
-        $builds = Build::where('page_rune_id', '=', $pagrune->id)->get();
-        foreach($builds as $build) {
-            Build::eliminar($build);
-        }
         $pagrune->delete();
-        
         return redirect()->route('pagrunes.list');
     }
 
@@ -116,7 +109,11 @@ class RunePage extends Model
         return view('runePage.runePages', compact('runePages'));
     }
 
-    public static function editarInfo(RunePage $runePage){
-        return view('runePage.runePageedit', compact('runePage'));
+    public static function editarInfo(String $t1, String $t2){
+        $type1 = array();$type2 = array();$type3 = array();
+        $type4 = array();$type5 = array();$type6 = array();
+        $t1 = "";
+        $t2 = "";
+        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6', 't1', 't2'));
     }
 }

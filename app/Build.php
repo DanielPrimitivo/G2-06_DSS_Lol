@@ -36,7 +36,6 @@ class Build extends Model
         $build->name = $data['name'];
         $build->champion_id = $data['champion_id'];
         $build->page_rune_id = $data['page_rune_id'];
-        //dd($build);
         $build->save();
         
         $build_id = Build::all()->last()->id;
@@ -86,9 +85,9 @@ class Build extends Model
     }
 
     public static function eliminar(Build $build){
-        DB::table('build_object')->where('build_id', '=', $build->id)->delete();
+        /*DB::table('build_object')->where('build_id', '=', $build->id)->delete();
         DB::table('build_spell')->where('build_id', '=', $build->id)->delete();
-        DB::table('build_user')->where('build_id', '=', $build->id)->delete();
+        DB::table('build_user')->where('build_id', '=', $build->id)->delete();*/
         $build->delete();
         return redirect()->route('builds.list');
     }

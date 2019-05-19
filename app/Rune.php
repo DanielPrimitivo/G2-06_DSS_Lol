@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Rune extends Model
 {
@@ -31,6 +32,15 @@ class Rune extends Model
     }
 
     public static function eliminar(Rune $rune){
+        $runesPageRunes = DB::table('rune_runePages')->where('rune_id', '=', $rune->id)->get();
+        $antID = -1;
+        foreach($runesPageRunes as $runePageRune){
+            $runePageID = $runePageRune->runePage_id;
+            if($runePageID != $antID){
+                RunePage::find($runePageID)->delete();
+                $antID = $runePageID;
+            }
+        }
         $rune->delete();
         return redirect()->route('runes.list');
     }

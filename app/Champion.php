@@ -42,8 +42,8 @@ class Champion extends Model
     }
 
     public static function eliminar(Champion $champion){
-        Hability::where('champion_id','=', $champion->id)->delete();
-        DB::table('champion_user')->where('champion_id','=', $champion->id)->delete();
+        //Hability::where('champion_id','=', $champion->id)->delete();
+        //DB::table('champion_user')->where('champion_id','=', $champion->id)->delete();
         $champion->delete();
         return redirect()->route('champions.list');
     }

@@ -55,6 +55,15 @@ class User extends Authenticatable
     }
 
     public static function eliminar(Int $id){
+        $buildUsers = DB::table('build_user')->where('user_id', '=', $id)->get();
+        $antID = -1;
+        foreach($buildUsers as $buildUser){
+            $buildID = $buildUser->build_id;
+            if($buildID != $antID){
+                Build::find($buildID)->delete();
+                $antID = $buildID;
+            }
+        }
         $champ_users = DB::table('champion_user')->where('user_id','=', $id)->delete();
         $us = User::find($id);
         $us->delete();

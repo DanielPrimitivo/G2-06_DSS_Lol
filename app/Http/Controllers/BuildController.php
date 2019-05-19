@@ -25,39 +25,76 @@ class BuildController extends Controller
         return Build::PagCrear();
     }
 
+    private function errorNinguno(String $dato, String $id){
+        if($dato == 'Ninguno'){
+            if($id == '1'){
+                return ['champion_id.integer' => 'Debes de seleccionar el nombre del campeon'];
+            }elseif($id == '2'){
+                return ['page_rune_id.integer' => 'Debes de seleccionar una pagina de runas'];
+            }elseif($id == '3' || $id == '4'){
+                $finalID = strval((int)$id - 2);
+                return ['spell_id'.$finalID.'.integer' => 'Debes de seleccionar el hechizo numero '.$finalID];
+            }else{
+                $finalID = strval((int)$id - 4);
+                return ['object_id'.$finalID.'.integer' => 'Debes de seleccionar el objeto numero '.$finalID];
+            }
+        }else{
+            return [];
+        }
+    }
+
+    private function retristictionNinguno(String $dato, String $id){
+        if($dato == 'Ninguno'){
+            if($id == '1'){
+                return ['champion_id' => 'integer'];
+            }elseif($id == '2'){
+                return ['page_rune_id' => 'integer'];
+            }elseif($id == '3' || $id == '4'){
+                $finalID = strval((int)$id - 2);
+                return ['spell_id'.$finalID => 'integer'];
+            }else{
+                $finalID = strval((int)$id - 4);
+                return ['object_id'.$finalID => 'integer'];
+            }
+        }else{
+            return [];
+        }
+    }
+
+    public function correcto(array $datos, String $validate){
+        if($validate == 'errors'){
+            $i = 1;
+            $errors = ['name.required' => 'El campo nombre está mal'];
+            foreach($datos as $dato){
+                $errors = array_merge($errors, $this->errorNinguno($dato, strval($i)));
+                $i += 1;
+            }
+            return $errors;
+        }else{
+            $i = 1;
+            $restrictions = ['name' => ['required', 'unique:builds,name']];
+            foreach($datos as $dato){
+                $restrictions = array_merge($restrictions, $this->retristictionNinguno($dato, strval($i)));
+                $i += 1;
+            }
+            return $restrictions;
+        }
+    }
+
     public function store(Request $request){ // Crear build
         // La validacion se debe de hacer en el controlador
-        $restrictions = ['name' => ['required', 'unique:builds,name']];
-        $errors = ['name.required' => 'El campo nombre está mal'];
-        $error_champion; $error_spell1; $error_spell2; $error_pagerune;
-        $error_id1; $error_id2; $error_id3; $error_id4; $error_id5; $error_id6;
-        $restriction_champion; $restriction_spell1; $restriction_spell2; $restriction_pagerune;
-        $restriction_id1; $restriction_id2; $restriction_id3; $restriction_id4; $restriction_id5; $restriction_id6;
-        if($request['champion_id'] == 'Ninguno'){
-            $restriction_champion = ['champion_id' => 'integer'];
-            $error_champion = ['champion_id.integer' => 'Debes de seleccionar algún campeón'];
-            array_merge($restrictions, $restriction_id1);
-            array_merge($errors, $error_id1);
-        }
+        $datos = array($request['champion_id'], $request['page_rune_id'], 
+            $request['spell_id1'], $request['spell_id2'], $request['object_id1'], 
+            $request['object_id2'], $request['object_id3'], $request['object_id4'],
+            $request['object_id5'], $request['object_id6']);
+        $errors = $this->correcto($datos, "errors");
+        $restrictions = $this->correcto($datos, "");
         $data = request()->validate($restrictions, $errors);
-        /*$data = array('name' => $request['name'],
-        'champion_id' => $request['champion_id'],
-        'page_rune_id' => $request['page_rune_id'],
-        'object_id1' => $request['object_id1'],
-        'object_id2' => $request['object_id2'],
-        'object_id3' => $request['object_id3'],
-        'object_id4' => $request['object_id4'],
-        'object_id5' => $request['object_id5'],
-        'object_id6' => $request['object_id6'],
-        'spell_id1' => $request['spell_id1'],
-        'spell_id2' => $request['spell_id2'],);*/
         $spells = array($request['spell_id1'], $request['spell_id2']);
         $objects = array($request['object_id1'], $request['object_id2'], $request['object_id3'],
         $request['object_id4'], $request['object_id5'], $request['object_id6']);
         return ChampionFavorite::createBuild($request['name'], Auth::User()->id, $request['champion_id'],
                 $request['page_rune_id'], $spells,$objects);
-        //return Build::crear($data);
-
     }
 
     public function edit(Build $build){
@@ -65,10 +102,14 @@ class BuildController extends Controller
     }
 
     public function update(Build $build){
-        /*$data = request()->validate([
-            'name' => 'required|unique:builds,name,'.$build->id,
-            
-        ]);*/
+        $datos = array($request['champion_id'], $request['page_rune_id'], 
+            $request['spell_id1'], $request['spell_id2'], $request['object_id1'], 
+            $request['object_id2'], $request['object_id3'], $request['object_id4'],
+            $request['object_id5'], $request['object_id6']);
+        $errors = $this->correcto($datos, "errors");
+        $restrictions = $this->correcto($datos, "");
+        $data = request()->validate($restrictions, $errors);
+
         return Build::actualizar($data, $build);
     }
 

@@ -17,8 +17,8 @@ class CreateBuildsObjectsTable extends Migration
             $table->increments('id');
             $table->integer('object_id');
             $table->integer('build_id');
-            $table->foreign('object_id')->references('id')->on('objects');
-            $table->foreign('build_id')->references('id')->on('builds');
+            $table->foreign('object_id')->references('id')->on('objects')->onDelete('cascade');
+            $table->foreign('build_id')->references('id')->on('builds')->onDelete('cascade');
             $table->timestamps();
         });
     }

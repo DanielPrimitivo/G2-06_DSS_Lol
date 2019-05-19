@@ -176,5 +176,7 @@ Route::delete('/pagrunas/{pagrune}', 'PageRunesController@destroy')->name('pagru
 
 Route::get('/pagrunas/filter', 'PageRunesController@showTypes')->name('pagrune.filter')->middleware('auth');
 
+Route::get('/pagrunas/filterEdit', 'PageRunesController@showTypesEdit')->name('pagrune.filteredit')->middleware('auth');
+
 
 Auth::routes();

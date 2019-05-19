@@ -19,7 +19,7 @@ class CreateHabilitiesTable extends Migration
             $table->string('description')->nullable();
             $table->string('icon')->nullable(); // La ruta de la imagen
             $table->integer('champion_id')->unsigned();
-            $table->foreign('champion_id')->references('id')->on('champions');
+            $table->foreign('champion_id')->references('id')->on('champions')->onDelete('cascade');
             $table->timestamps();
         });
     }

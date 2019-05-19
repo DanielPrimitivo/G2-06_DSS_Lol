@@ -18,8 +18,8 @@ class CreateChampionUserTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('champion_id')->unsigned();
             $table->unique(['user_id', 'champion_id']);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('champion_id')->references('id')->on('champions');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('champion_id')->references('id')->on('champions')->onDelete('cascade');
             $table->timestamps();
         });
     }

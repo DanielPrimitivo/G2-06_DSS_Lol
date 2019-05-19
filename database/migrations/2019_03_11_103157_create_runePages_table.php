@@ -14,11 +14,11 @@ class CreateRunePagesTable extends Migration
     public function up()
     {
         Schema::create('rune_pages', function (Blueprint $table) {
-            $table->increments('id')->onDelete('cascade');
+            $table->increments('id');
             $table->string('name');
             $table->string('icon')->nullable(); // Ruta de acceso a la imagen
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

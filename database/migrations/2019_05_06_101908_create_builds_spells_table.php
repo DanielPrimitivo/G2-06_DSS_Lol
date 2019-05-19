@@ -17,8 +17,8 @@ class CreateBuildsSpellsTable extends Migration
             $table->increments('id');
             $table->integer('spell_id');
             $table->integer('build_id');
-            $table->foreign('spell_id')->references('id')->on('spells');
-            $table->foreign('build_id')->references('id')->on('builds');
+            $table->foreign('spell_id')->references('id')->on('spells')->onDelete('cascade');
+            $table->foreign('build_id')->references('id')->on('builds')->onDelete('cascade');
             $table->timestamps();
         });
     }
