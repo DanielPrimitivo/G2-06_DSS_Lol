@@ -93,21 +93,22 @@ class PageRunesController extends Controller
         $errors = $this->correcto($datos, "errors");
         $restrictions = $this->correcto($datos, "");
         $data = request()->validate($restrictions, $errors);
-        /*$data = array(
+        $data = array(
             'name' => $request['name'],
             'rune_id1' => $request['rune_id1'],
             'rune_id2' => $request['rune_id2'],
             'rune_id3' => $request['rune_id3'],
             'rune_id4' => $request['rune_id4'],
             'rune_id5' => $request['rune_id5'],
-            'rune_id6' => $request['rune_id6'].
-            'user_id' => Auth::User()->id
-        );*/
+            'rune_id6' => $request['rune_id6']
+        );
         return RunePage::crear($data);
     }
 
-    public function edit(RunePage $pagrune){
-        return RunePage::editarInfo($pagrune);
+    public function edit(RunePage $pagrune, Request $request){
+        $t1 = $request->input('type1'); // Como se llame a lo que seleccione
+        $t2 = $request->input('type2'); // Como se llame a lo que seleccione
+        return RunePage::editarInfo($pagrune, $t1, $t2);
     }
 
     public function update(RunePage $pagrune){

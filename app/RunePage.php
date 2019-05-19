@@ -109,11 +109,23 @@ class RunePage extends Model
         return view('runePage.runePages', compact('runePages'));
     }
 
-    public static function editarInfo(String $t1, String $t2){
+    public static function editarInfo(RunePage $runePage, String $t1, String $t2){
+        $runes1 = Rune::runesType($t1);
+        $runes2 = Rune::runesType($t2);
         $type1 = array();$type2 = array();$type3 = array();
         $type4 = array();$type5 = array();$type6 = array();
-        $t1 = "";
-        $t2 = "";
-        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6', 't1', 't2'));
+        foreach($runes1 as $rune){
+            if($rune->row == 1){
+                $type1[] = $rune;
+            }else if($rune->row == 2){
+                $type2[] = $rune;
+            }else if($rune->row == 3){
+                $type3[] = $rune;
+            }else{
+                $type4[] = $rune;
+            }
+        }
+        $type5 = $type6 = $runes2; 
+        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6', 't1', 't2', 'runePage'));
     }
 }
