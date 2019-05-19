@@ -112,13 +112,29 @@ class RunePage extends Model
     public static function editarInfo(RunePage $runePage){
         $runesRunesPages = DB::table('rune_runePages')->where('runePage_id', '=', $runePage->id)->get();
         $t1 = ""; $t2 = "";
+        $rune1;$rune2;$rune3;$rune4;$rune5;$rune6;
+        $i = 1;
         foreach($runesRunesPages as $runeRunePage){
             $rune = Rune::find($runeRunePage->rune_id);
+            if($i == 1){
+                $rune1 = $rune;
+            }else if($i == 2){
+                $rune2 = $rune;
+            }else if($i == 3){
+                $rune3 = $rune;
+            }else if($i == 4){
+                $rune4 = $rune;
+            }else if($i == 5){
+                $rune5 = $rune;
+            }else if($i == 6){
+                $rune6 = $rune;
+            }
             if($t1 == ""){
                 $t1 = $rune->type;
             }else if($rune->type != $t1){
                     $t2 = $rune->type;
             }
+            $i += 1;
         }
         $runes1 = Rune::runesType($t1);
         $runes2 = Rune::runesType($t2);
@@ -136,6 +152,6 @@ class RunePage extends Model
             }
         }
         $type5 = $type6 = $runes2; 
-        return view('runePage.runePageedit', compact('type1','type2','type3','type4','type5','type6', 't1', 't2', 'runePage'));
+        return view('runePage.runePageedit', compact('type1','type2','type3','type4','type5','type6', 't1', 't2', 'runePage', 'rune1', 'rune2', 'rune3', 'rune4', 'rune5', 'rune6'));
     }
 }
