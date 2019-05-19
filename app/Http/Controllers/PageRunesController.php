@@ -68,14 +68,25 @@ class PageRunesController extends Controller
         }
     }
 
-    public function correcto(array $datos, String $validate, String $mode){
-        $name = [];
+    public function correcto(array $datos, String $validate, String $mode, String $name, int $runeID){
+        $nameE = [];
+        $nameR = [];
         if($mode == "create"){
-            $name = ['name.required' => 'El campo nombre está mal'];
+            $nameE = ['name.required' => 'El campo nombre está mal'];
+            $nameR = ['name' => ['required', 'unique:rune_pages,name']];
+        }else if($mode == "update"){
+            if($name == ""){
+                $nameE = ['name.required' => 'El campo nombre está vacio'];
+                $nameR = ['name' => ['required']];
+            }else if(RunePage::Find($runeID)->name != $name){
+                $nameE = ['name.required' => 'El campo nombre está mal',
+                          'name.unique' => 'El campo nombre ya existe en la Base de datos, cambialo'];
+                $nameR = ['name' => ['required', 'unique:rune_pages,name']];
+            }            
         }
         if($validate == 'errors'){
             $i = 1;
-            $errors = $name;
+            $errors = $nameE;
             foreach($datos as $dato){
                 $errors = array_merge($errors, $this->errorNinguno($dato, strval($i)));
                 $i += 1;
@@ -83,7 +94,7 @@ class PageRunesController extends Controller
             return $errors;
         }else{
             $i = 1;
-            $restrictions = $name;
+            $restrictions = $nameR;
             foreach($datos as $dato){
                 $restrictions = array_merge($restrictions, $this->retristictionNinguno($dato, strval($i)));
                 $i += 1;
@@ -95,8 +106,12 @@ class PageRunesController extends Controller
     public function store(Request $request){ // Crear runa
         // La validacion se debe de hacer en el controlador
         $datos = array($request['rune_id1'], $request['rune_id2'], $request['rune_id3'], $request['rune_id4'], $request['rune_id5'], $request['rune_id6']);
-        $errors = $this->correcto($datos, "errors", "create");
-        $restrictions = $this->correcto($datos, "", "create");
+        $name = "";
+        if($request['name'] != null){
+            $name = $request['name'];
+        }
+        $errors = $this->correcto($datos, "errors", "create", $name, 0);
+        $restrictions = $this->correcto($datos, "", "create", $name, 0);
         $data = request()->validate($restrictions, $errors);
         $data = array(
             'name' => $request['name'],
@@ -116,8 +131,12 @@ class PageRunesController extends Controller
 
     public function update(Request $request, RunePage $pagrune){
         $datos = array($request['rune_id1'], $request['rune_id2'], $request['rune_id3'], $request['rune_id4'], $request['rune_id5'], $request['rune_id6']);
-        $errors = $this->correcto($datos, "errors", "update");
-        $restrictions = $this->correcto($datos, "", "update");
+        $name = "";
+        if($request['name'] != null){
+            $name = $request['name'];
+        }
+        $errors = $this->correcto($datos, "errors", "update", $name, $pagrune->id);
+        $restrictions = $this->correcto($datos, "", "update", $name, $pagrune->id);
         $data = request()->validate($restrictions, $errors);
         $data = array(
             'name' => $request['name'],

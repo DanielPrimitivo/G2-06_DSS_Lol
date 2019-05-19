@@ -72,13 +72,33 @@ class Build extends Model
     }
 
     public static function actualizar(array $data, Build $build){
-        $build->update($data);
+        $build->update($data['datos']);
+        $buildsSpells = DB::table('build_spell')->where('build_id', '=', $build->id)->get();
+        $buildsObjects = DB::table('build_object')->where('build_id', '=', $build->id)->get();
+        $i = 0;
+        foreach($buildsSpells as $buildSpell){
+            if(!in_array($buildSpell->spell_id, $data['spells'])){
+                //dd($build->id);
+                DB::table('build_spell')->where('build_id', '=', $build->id)
+                                        ->where('spell_id', '=', (int)$buildSpell->spell_id)
+                                        ->update(['spell_id' => (int)$data['spells'][$i]]);
+            }
+            $i += 1;
+        }
+        $i = 0;
+        foreach($buildsObjects as $buildObject){
+            DB::table('build_object')->where('build_id', '=', $build->id)
+                                        ->where('object_id', '=', (int)$buildObject->object_id)->take(1)
+                                            ->update(['object_id' => (int)$data['objects'][$i]]);
+            $i += 1;
+        }
+        
         return redirect()->route('build.details', ['build' => $build]);
     }
 
     public static function PagCrear(){
         $champions = Champion::All();
-        $page_runes = RunePage::All();
+        $page_runes = RunePage::where('user_id', '=', Auth::User()->id)->get();
         $spells = Spell::All();
         $objects = Object::All();
         return view('build.buildcreate', compact('champions', 'page_runes', 'spells', 'objects'));
@@ -98,6 +118,13 @@ class Build extends Model
     }
 
     public static function listaUserNormal(){
+        /*$buildsUser = DB::table('build_user')->where('user_id', '=', Auth::User()->id)->paginate(12);
+        $builds = array();
+        dd($builds);
+        foreach($buildsUser as $build){
+            $b = Build::Find($build->build_id)->get()->toArray();
+            $builds = array_merge($builds, $b);
+        } */
         $builds = Build::paginate(12);
         return view('build.builds', compact('builds'));
     }
@@ -116,6 +143,30 @@ class Build extends Model
     }
 
     public static function editarInfo(Build $build){
-        return view('build.buildedit', compact('build'));
+        $champions = Champion::All();
+        $page_runes = RunePage::where('user_id', '=', Auth::User()->id)->get();
+        $spells = Spell::All();
+        $objects = Object::All();
+        $champion_e = $build->champion;
+        $pageRune_e = RunePage::Find($build->page_rune_id);
+        $spell_id1 = DB::table('build_spell')->where('build_id', '=', $build->id)->first()->spell_id;
+        $spell_id2 = DB::table('build_spell')->where('build_id', '=', $build->id)->get()[1]->spell_id;
+        $spell_id1_e = Spell::Find($spell_id1);
+        $spell_id2_e = Spell::Find($spell_id2);
+        $objects_id1 = DB::table('build_object')->where('build_id', '=', $build->id)->first()->object_id;
+        $objects_id2 = DB::table('build_object')->where('build_id', '=', $build->id)->get()[1]->object_id;
+        $objects_id3 = DB::table('build_object')->where('build_id', '=', $build->id)->get()[2]->object_id;
+        $objects_id4 = DB::table('build_object')->where('build_id', '=', $build->id)->get()[3]->object_id;
+        $objects_id5 = DB::table('build_object')->where('build_id', '=', $build->id)->get()[4]->object_id;
+        $objects_id6 = DB::table('build_object')->where('build_id', '=', $build->id)->get()[5]->object_id;
+        $object_id1_e = Object::Find($objects_id1);
+        $object_id2_e = Object::Find($objects_id2);
+        $object_id3_e = Object::Find($objects_id3);
+        $object_id4_e = Object::Find($objects_id4);
+        $object_id5_e = Object::Find($objects_id5);
+        $object_id6_e = Object::Find($objects_id6);
+        return view('build.buildedit', compact('build', 'champions', 'page_runes', 'spells', 'objects', 'champion_e', 'pageRune_e', 
+                                                'spell_id1_e', 'spell_id2_e',
+                                                'object_id1_e', 'object_id2_e', 'object_id3_e', 'object_id4_e', 'object_id5_e', 'object_id6_e'));
     }
 }

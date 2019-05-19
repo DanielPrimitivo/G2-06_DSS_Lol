@@ -84,7 +84,7 @@ class RunePage extends Model
             }
             $i += 1;
         }
-        return redirect()->route('pagrunes.details', ['runePage' => $runePage]);
+        return RunePage::informacionIndividual($runePage);
     }
 
     public static function PagCrear(){
@@ -106,7 +106,7 @@ class RunePage extends Model
     }
 
     public static function listaUserNormal(){
-        $runePages = RunePage::paginate(12);
+        $runePages = RunePage::where('user_id', '=', Auth::User()->id)->paginate(12);
         return view('runePage.runePages', compact('runePages'));
     }
 

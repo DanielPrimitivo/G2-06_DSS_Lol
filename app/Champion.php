@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class Champion extends Model
 {
@@ -61,7 +62,11 @@ class Champion extends Model
 
     public static function informacionIndividual(Champion $champion){
         $habilities = Hability::where('champion_id', '=', $champion->id)->get();
-        return view('champion.champion', compact('champion', 'habilities'));
+        $favorito = "";
+        if(Auth::User() != null && DB::table('champion_user')->where('user_id', '=', Auth::User()->id)->where('champion_id', '=', $champion->id)->count() == 1){
+            $favorito = "Favorito";
+        }
+        return view('champion.champion', compact('champion', 'habilities', 'favorito'));
     }
 
     public static function ordenarAlfabeticamente(){

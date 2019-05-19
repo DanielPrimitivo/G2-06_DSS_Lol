@@ -54,7 +54,7 @@
                         <select class="form-control" name="page_rune_id" id="page_rune_id">
                             <option value="{{ $pageRune_e->id }}" selected>{{ $pageRune_e->name }}</option>
                             @foreach ($page_runes as $page_rune)
-                            @if ($pageRune->name != $pageRune_e->name)
+                            @if ($page_rune->name != $pageRune_e->name)
                                 <option value="{{$page_rune->id}}">{{$page_rune->name}}</option>
                                 @endif
                             @endforeach
@@ -95,6 +95,7 @@
                             @foreach ($objects as $object)
                             @if ($object->name != $object_id1_e->name)
                                 <option value="{{$object->id}}">{{$object->name}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
