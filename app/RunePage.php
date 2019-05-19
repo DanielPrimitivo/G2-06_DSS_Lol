@@ -136,6 +136,6 @@ class RunePage extends Model
             }
         }
         $type5 = $type6 = $runes2; 
-        return view('runePage.runePagecreate', compact('type1','type2','type3','type4','type5','type6', 't1', 't2', 'runePage'));
+        return view('runePage.runePageedit', compact('type1','type2','type3','type4','type5','type6', 't1', 't2', 'runePage'));
     }
 }

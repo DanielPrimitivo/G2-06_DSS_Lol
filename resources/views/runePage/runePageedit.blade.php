@@ -1,13 +1,13 @@
 @extends('layout')
 
-@section('title', "Editar hechizo")
+@section('title', "Editar página de runas")
 
 @section('content')
 
 	<div class="row justify-content-center">
 		<div class="col align-self-center">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
-				<h1>Editar hechizo</h1>
+				<h1>Editar página de runas</h1>
 			</div>
 		</div>
 	</div>
@@ -25,25 +25,91 @@
 
     <div class="row justify-content-center align-items-center space">
         <div class="col-md-8 col-lg-6">
-            <form method="POST" action="{{ route('spell.update', ['spell' => $spell]) }}">
+            <form method="POST" action="{{ route('pagrune.update', ['runePage' => $runePage]) }}">
                 {{ method_field('PUT') }} <!-- Para que este formulario sea de tipo PUT y así poder actualizar -->
                 {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
                 <div class="form-group row">
                     <label for="name" class="col-sm-3 col-form-label falign">Nombre</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="{{old('name', $spell->name)}}">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="{{old('name', $runePage->name)}}">
+                    </div>
+                </div>
+                @if ($t1 != "Ninguno")
+                    <div class="form-group row justify-content-center"><h3>{{$t1}}</h3></div>
+                @endif
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 1</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="rune_id1" id="rune_id1">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($type1 as $typ)
+                                <option value="{{$typ->id}}">{{$typ->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="type" class="col-sm-3 col-form-label falign">Descripción</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 2</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="description" id="description" placeholder="Descripción" value="{{old('description', $spell->description)}}">
+                        <select class="form-control" name="rune_id2" id="rune_id2">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($type2 as $typ)
+                                <option value="{{$typ->id}}">{{$typ->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 3</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="rune_id3" id="rune_id3">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($type3 as $typ)
+                                <option value="{{$typ->id}}">{{$typ->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 4</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="rune_id4" id="rune_id4">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($type4 as $typ)
+                                <option value="{{$typ->id}}">{{$typ->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @if ($t2 != "Ninguno")
+                    <div class="form-group row justify-content-center"><h3>{{$t2}}</h3></div>
+                @endif
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 5</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="rune_id5" id="rune_id5">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($type5 as $typ)
+                                <option value="{{$typ->id}}">{{$typ->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 6</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="rune_id6" id="rune_id6">
+                            <option value="Ninguno" selected>Ninguno</option>
+                            @foreach ($type6 as $typ)
+                                <option value="{{$typ->id}}">{{$typ->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary">Actualizar hechizo</button>
+                        <button type="submit" class="btn btn-primary">Actualizar página de runas</button>
                     </div>    
                 </div>
             </form>
