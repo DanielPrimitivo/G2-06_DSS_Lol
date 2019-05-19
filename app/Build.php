@@ -132,7 +132,7 @@ class Build extends Model
     public static function informacionIndividual(Build $build){
         $champion = $build->champion;
         $objects = $build->objects;
-        $runesPage = $build->runePage;
+        $runesPage = RunePage::find(Build::find($build->id)->page_rune_id);
         $spells = $build->spells;
         return view('build.build', compact('build', 'champion', 'objects', 'runesPage', 'spells'));
     }
