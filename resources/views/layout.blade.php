@@ -28,26 +28,32 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-dark static-top">
     <div class="container">
-      @guest
-        <a class="navbar-brand" href="/">Master LOL</a>
-      @else
-        <a class="navbar-brand" href="/admin">Master LOL</a>
-      @endguest
+        <div class="col-sm-8 col-md-10">
+          @guest
+            <a class="text-white navbar-brand" href="/">Master LOL</a>
+          @else
+            <a class="text-white navbar-brand" href="/admin">Master LOL</a>
+          @endguest
+        </div>
       <!-- <a class="btn btn-primary" href="#">Iniciar Sesión</a> -->
-      <ul class="navbar-nav ml-auto">
+      
         <!-- Authentication Links -->
+        
         @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
+          <div class="col-sm-2 col-md-1">
+                <a class="text-white nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+          </div>
+          <div class="col-sm-2 col-md-1">  
             @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
+                <a class="text-white nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                
             @endif
+          </div>
         @else
+        <div class="col-sm-4 col-md-2">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
@@ -63,8 +69,9 @@
               </form>
             </div>
           </li>
+        </ul>
+        </div>
         @endguest
-      </ul>
     </div>
   </nav>
 
