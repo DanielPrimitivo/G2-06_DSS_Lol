@@ -121,13 +121,31 @@
                 </div>
                 </div>
                 </div>
-                <div class="imgprueba row justify-content-center align-items-center ">
+
+                @if ($t1 == "Precision") 
+                    <div class="fprecision row justify-content-center align-items-center ">
+                @endif
+                @if ($t1 == "Dominacion") 
+                    <div class="fdominacion row justify-content-center align-items-center ">
+                @endif 
+                @if ($t1 == "Valor") 
+                    <div class="fvalor row justify-content-center align-items-center ">
+                @endif
+                @if ($t1 == "Brujeria") 
+                    <div class="fbrujeria row justify-content-center align-items-center ">
+                @endif 
+                @if ($t1 == "Inspiracion") 
+                    <div class="finspiracion row justify-content-center align-items-center ">
+                @endif
+
+
                 <div class="col-md-8 col-lg-6">
                 @if ($t1 != "Ninguno")
-                    <div class="form-group row justify-content-center"><h3>{{$t1}}</h3></div>
+                <br>
+                    <div class="form-group row justify-content-center text-white"><h3>{{$t1}}</h3></div>
                 @endif
                 <div class="form-group row">
-                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 1</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign text-white">Runa 1</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id1" id="rune_id1">
                             <option value="Ninguno" selected>Ninguno</option>
@@ -138,7 +156,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 2</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign text-white">Runa 2</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id2" id="rune_id2">
                             <option value="Ninguno" selected>Ninguno</option>
@@ -149,7 +167,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 3</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign text-white">Runa 3</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id3" id="rune_id3">
                             <option value="Ninguno" selected>Ninguno</option>
@@ -160,7 +178,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 4</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign text-white">Runa 4</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id4" id="rune_id4">
                             <option value="Ninguno" selected>Ninguno</option>
@@ -171,13 +189,31 @@
                     </div>
                 </div>
 </div></div>
-<div class="imgprueba row justify-content-center align-items-center">
+
+                @if ($t2 == "Precision") 
+                    <div class="fprecision row justify-content-center align-items-center ">
+                @endif
+                @if ($t2 == "Dominacion") 
+                    <div class="fdominacion row justify-content-center align-items-center ">
+                @endif 
+                @if ($t2 == "Valor") 
+                    <div class="fvalor row justify-content-center align-items-center ">
+                @endif
+                @if ($t2 == "Brujeria") 
+                    <div class="fbrujeria row justify-content-center align-items-center ">
+                @endif 
+                @if ($t2 == "Inspiracion") 
+                    <div class="finspiracion row justify-content-center align-items-center ">
+                @endif
+
+
                 <div class="col-md-8 col-lg-6">
                 @if ($t2 != "Ninguno")
-                    <div class="form-group row justify-content-center"><h3>{{$t2}}</h3></div>
+                <br>
+                    <div class="form-group row justify-content-center text-white"><h3>{{$t2}}</h3></div>
                 @endif
                 <div class="form-group row">
-                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 5</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign text-white">Runa 5</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id5" id="rune_id5">
                             <option value="Ninguno" selected>Ninguno</option>
@@ -188,7 +224,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputState" class="col-sm-3 col-form-label falign">Runa 6</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign text-white">Runa 6</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id6" id="rune_id6">
                             <option value="Ninguno" selected>Ninguno</option>

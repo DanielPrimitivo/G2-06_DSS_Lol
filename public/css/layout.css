@@ -218,7 +218,27 @@ footer.footer {
 	padding-bottom: 1rem;
 }
 
-.imgprueba {
+.fdominacion{
+	background: url("../img/bdominacion.jpg") no-repeat center center;
+	background-size: cover;
+}
+
+.fprecision{
 	background: url("../img/bprecision.jpg") no-repeat center center;
+	background-size: cover;
+}
+
+.finspiracion{
+	background: url("../img/binspiracion.jpg") no-repeat center center;
+	background-size: cover;
+}
+
+.fvalor{
+	background: url("../img/bvalor.jpg") no-repeat center center;
+	background-size: cover;
+}
+
+.fbrujeria{
+	background: url("../img/bbrujeria.jpg") no-repeat center center;
 	background-size: cover;
 }
