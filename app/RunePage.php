@@ -101,7 +101,7 @@ class RunePage extends Model
     }
 
     public static function listaUserAdmin(){
-        $runePages = RunePage::paginate(20);
+        $runePages = RunePage::paginate(12);
         return view('runePage.runePageslist', compact('runePages'));
     }
 

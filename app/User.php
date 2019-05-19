@@ -45,12 +45,12 @@ class User extends Authenticatable
     }
 
     public static function principal(){
-        $users = User::paginate(18);
+        $users = User::paginate(12);
         return view('user.users', compact('users'));
     }
 
     public static function listar(){
-        $users = User::paginate(18);
+        $users = User::paginate(12);
         return view('user.userslist', compact('users'));
     }
 
@@ -69,10 +69,4 @@ class User extends Authenticatable
         $us->delete();
         return redirect()->route('users.list');
     }
-
-    /* DESHABILITADO HASTA LA INTRODUCCIÓN DE LAS PÁGINAS DE RUNAS
-
-    public function runespages(){
-        return $this->hasMany('App\RunePage');
-    }*/
 }

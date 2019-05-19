@@ -46,7 +46,7 @@ class Rune extends Model
     }
 
     public static function listaUserAdmin(){
-        $runes = Rune::paginate(20);
+        $runes = Rune::paginate(12);
         return view('rune.runeslist', compact('runes'));
     }
 

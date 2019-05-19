@@ -45,7 +45,7 @@ class Spell extends Model
     }
 
     public static function listaUserAdmin(){
-        $spells = Spell::paginate(20);
+        $spells = Spell::paginate(12);
         return view('spell.spellslist', compact('spells'));
     }
 

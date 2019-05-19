@@ -18,12 +18,12 @@ class Hability extends Model
     }
 
     public static function principal(){
-        $habilities = Hability::paginate(18);
+        $habilities = Hability::paginate(12);
         return view('hability.habilities', compact('habilities'));
     }
 
     public static function listar(){
-        $habilities = Hability::paginate(18);
+        $habilities = Hability::paginate(12);
         return view('hability.habilitieslist', compact('habilities'));
     }
 

@@ -50,7 +50,7 @@ class Champion extends Model
     }
 
     public static function listaUserAdmin(){
-        $champions = Champion::paginate(20);
+        $champions = Champion::paginate(12);
         return view('champion.championslist', compact('champions'));
     }
 

@@ -48,7 +48,7 @@ class Object extends Model
     }
 
     public static function listaUserAdmin(){
-        $objects = Object::paginate(20);
+        $objects = Object::paginate(12);
         return view('object.objectslist', compact('objects'));
     }
 

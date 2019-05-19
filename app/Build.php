@@ -113,7 +113,7 @@ class Build extends Model
     }
 
     public static function listaUserAdmin(){
-        $builds = Build::paginate(20);
+        $builds = Build::paginate(12);
         return view('build.buildslist', compact('builds'));
     }
 
