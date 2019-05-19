@@ -137,6 +137,9 @@
                 @if ($t1 == "Inspiracion") 
                     <div class="finspiracion row justify-content-center align-items-center ">
                 @endif
+                @if ($t1 == "") 
+                    <div class="row justify-content-center align-items-center ">
+                @endif
 
 
                 <div class="col-md-8 col-lg-6">
@@ -205,6 +208,9 @@
                 @if ($t2 == "Inspiracion") 
                     <div class="finspiracion row justify-content-center align-items-center ">
                 @endif
+                @if ($t2 == "") 
+                    <div class="row justify-content-center align-items-center ">
+                @endif
 
 
                 <div class="col-md-8 col-lg-6">
@@ -213,7 +219,7 @@
                     <div class="form-group row justify-content-center text-white"><h3>{{$t2}}</h3></div>
                 @endif
                 <div class="form-group row">
-                    <label for="inputState" class="col-sm-3 col-form-label falign text-white">Runa 5</label>
+                    <label for="inputState" class="col-sm-3 col-form-label falign ">Runa 5</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id5" id="rune_id5">
                             <option value="Ninguno" selected>Ninguno</option>
