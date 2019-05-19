@@ -109,7 +109,7 @@ class PageRunesController extends Controller
         return RunePage::editarInfo($pagrune);
     }
 
-    public function update(RunePage $pagrune){
+    public function update(Request $request, RunePage $pagrune){
         $datos = array($request['rune_id1'], $request['rune_id2'], $request['rune_id3'], $request['rune_id4'], $request['rune_id5'], $request['rune_id6']);
         $errors = $this->correcto($datos, "errors");
         $restrictions = $this->correcto($datos, "");

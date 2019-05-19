@@ -157,10 +157,10 @@ Route::delete('/builds/{build}', 'BuildController@destroy')->name('build.destroy
 
 /** ************************** ROUTES PAGRUNES ************************** */
 
-Route::get('/pagrunas', 'PageRunesController@index')->name('pagrunes');
+Route::get('/pagrunas', 'PageRunesController@index')->name('pagrunes')->middleware('auth');
 
 Route::get('/pagrunas/{pagrune}', 'PageRunesController@show')
-    ->where('pagrune', '[0-9]+')->name('pagrunes.details');
+    ->where('pagrune', '[0-9]+')->name('pagrunes.details')->middleware('auth');
 
 Route::get('/pagrunas/lista', 'PageRunesController@list')->name('pagrunes.list')->middleware('administrator');
 
