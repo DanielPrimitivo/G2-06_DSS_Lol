@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\RunePage;
+use Illuminate\Support\Facades\Auth;
 
 class PageRunesController extends Controller
 {
@@ -67,10 +68,14 @@ class PageRunesController extends Controller
         }
     }
 
-    public function correcto(array $datos, String $validate){
+    public function correcto(array $datos, String $validate, String $mode){
+        $name = [];
+        if($mode == "create"){
+            $name = ['name.required' => 'El campo nombre está mal'];
+        }
         if($validate == 'errors'){
             $i = 1;
-            $errors = ['name.required' => 'El campo nombre está mal'];
+            $errors = $name;
             foreach($datos as $dato){
                 $errors = array_merge($errors, $this->errorNinguno($dato, strval($i)));
                 $i += 1;
@@ -78,7 +83,7 @@ class PageRunesController extends Controller
             return $errors;
         }else{
             $i = 1;
-            $restrictions = ['name' => ['required', 'unique:rune_pages,name']];
+            $restrictions = $name;
             foreach($datos as $dato){
                 $restrictions = array_merge($restrictions, $this->retristictionNinguno($dato, strval($i)));
                 $i += 1;
@@ -90,8 +95,8 @@ class PageRunesController extends Controller
     public function store(Request $request){ // Crear runa
         // La validacion se debe de hacer en el controlador
         $datos = array($request['rune_id1'], $request['rune_id2'], $request['rune_id3'], $request['rune_id4'], $request['rune_id5'], $request['rune_id6']);
-        $errors = $this->correcto($datos, "errors");
-        $restrictions = $this->correcto($datos, "");
+        $errors = $this->correcto($datos, "errors", "create");
+        $restrictions = $this->correcto($datos, "", "create");
         $data = request()->validate($restrictions, $errors);
         $data = array(
             'name' => $request['name'],
@@ -111,17 +116,18 @@ class PageRunesController extends Controller
 
     public function update(Request $request, RunePage $pagrune){
         $datos = array($request['rune_id1'], $request['rune_id2'], $request['rune_id3'], $request['rune_id4'], $request['rune_id5'], $request['rune_id6']);
-        $errors = $this->correcto($datos, "errors");
-        $restrictions = $this->correcto($datos, "");
+        $errors = $this->correcto($datos, "errors", "update");
+        $restrictions = $this->correcto($datos, "", "update");
         $data = request()->validate($restrictions, $errors);
         $data = array(
             'name' => $request['name'],
-            'rune_id1' => $request['rune_id1'],
+            'runas' => $datos,
+            /*'rune_id1' => $request['rune_id1'],
             'rune_id2' => $request['rune_id2'],
             'rune_id3' => $request['rune_id3'],
             'rune_id4' => $request['rune_id4'],
             'rune_id5' => $request['rune_id5'],
-            'rune_id6' => $request['rune_id6'],
+            'rune_id6' => $request['rune_id6'],*/
             'user_id' => Auth::User()->id
         );
         return RunePage::actualizar($data, $pagrune);

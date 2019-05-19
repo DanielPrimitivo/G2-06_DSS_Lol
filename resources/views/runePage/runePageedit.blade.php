@@ -42,7 +42,7 @@
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 1</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id1" id="rune_id1">
-                            <option value="{{$rune1->name}}" selected>{{$rune1->name}}</option>
+                            <option value="{{$rune1->id}}" selected>{{$rune1->name}}</option>
                             @foreach ($type1 as $typ)
                                 @if ($rune1->name != $typ->name) 
                                     <option value="{{$typ->id}}">{{$typ->name}}</option>
@@ -55,7 +55,7 @@
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 2</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id2" id="rune_id2">
-                            <option value="{{$rune2->name}}" selected>{{$rune2->name}}</option>
+                            <option value="{{$rune2->id}}" selected>{{$rune2->name}}</option>
                             @foreach ($type2 as $typ)
                             @if ($rune2->name != $typ->name) 
                                 <option value="{{$typ->id}}">{{$typ->name}}</option>
@@ -68,7 +68,7 @@
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 3</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id3" id="rune_id3">
-                            <option value="{{$rune3->name}}" selected>{{$rune3->name}}</option>
+                            <option value="{{$rune3->id}}" selected>{{$rune3->name}}</option>
                             @foreach ($type3 as $typ)
                             @if ($rune3->name != $typ->name) 
                                 <option value="{{$typ->id}}">{{$typ->name}}</option>
@@ -81,7 +81,7 @@
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 4</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id4" id="rune_id4">
-                            <option value="{{$rune4->name}}" selected>{{$rune4->name}}</option>
+                            <option value="{{$rune4->id}}" selected>{{$rune4->name}}</option>
                             @foreach ($type4 as $typ)
                             @if ($rune4->name != $typ->name) 
                                 <option value="{{$typ->id}}">{{$typ->name}}</option>
@@ -97,7 +97,7 @@
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 5</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id5" id="rune_id5">
-                            <option value="{{$rune5->name}}" selected>{{$rune5->name}}</option>
+                            <option value="{{$rune5->id}}" selected>{{$rune5->name}}</option>
                             @foreach ($type5 as $typ)
                             @if ($rune5->name != $typ->name) 
                                 <option value="{{$typ->id}}">{{$typ->name}}</option>
@@ -110,7 +110,7 @@
                     <label for="inputState" class="col-sm-3 col-form-label falign">Runa 6</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="rune_id6" id="rune_id6">
-                            <option value="{{$rune6->name}}" selected>{{$rune6->name}}</option>
+                            <option value="{{$rune6->id}}" selected>{{$rune6->name}}</option>
                             @foreach ($type6 as $typ)
                             @if ($rune6->name != $typ->name) 
                                 <option value="{{$typ->id}}">{{$typ->name}}</option>

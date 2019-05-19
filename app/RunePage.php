@@ -72,9 +72,19 @@ class RunePage extends Model
         return redirect()->route('pagrunes');
     }
 
-    public static function actualizar(array $data, RunePage $pagrune){
-        $pagrune->update($data);
-        return redirect()->route('pagrune.details', ['runePage' => $runePage]);
+    public static function actualizar(array $data, RunePage $runePage){
+        $runePage->update($data);
+        $runeRunePages = DB::table('rune_runePages')->where('runePage_id', '=', $runePage->id)->get();
+        $i = 0;
+        foreach($runeRunePages as $runeRunePage){
+            if(!in_array($runeRunePage->rune_id, $data['runas'])){
+                DB::table('rune_runePages')->where('runePage_id', '=', $runePage->id)
+                                                ->where('rune_id', '=', $runeRunePage->rune_id)
+                                                 ->update(['rune_id' => $data['runas'][$i]]);
+            }
+            $i += 1;
+        }
+        return redirect()->route('pagrunes.details', ['runePage' => $runePage]);
     }
 
     public static function PagCrear(){
