@@ -105,12 +105,13 @@
 		</div>
 	</div>
 
-    <div class="row justify-content-center align-items-center space">
-        <div class="col-md-8 col-lg-6">
+    
             <form method="POST" action="{{route('pagrune.create.post')}}">
                 {{ csrf_field() }} <!--Prevencion contra ataques tipo CSRF -->
 
                 <!-- Formulario para añadir nueva página de runas -->
+                <div  class="row justify-content-center align-items-center space">
+                <div class="col-md-8 col-lg-6">
 
                 <div class="form-group row">
                     <label for="name" class="col-sm-3 col-form-label falign">Nombre</label>
@@ -118,6 +119,10 @@
                         <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
                     </div>
                 </div>
+                </div>
+                </div>
+                <div class="imgprueba row justify-content-center align-items-center ">
+                <div class="col-md-8 col-lg-6">
                 @if ($t1 != "Ninguno")
                     <div class="form-group row justify-content-center"><h3>{{$t1}}</h3></div>
                 @endif
@@ -165,6 +170,9 @@
                         </select>
                     </div>
                 </div>
+</div></div>
+<div class="imgprueba row justify-content-center align-items-center">
+                <div class="col-md-8 col-lg-6">
                 @if ($t2 != "Ninguno")
                     <div class="form-group row justify-content-center"><h3>{{$t2}}</h3></div>
                 @endif
@@ -194,8 +202,9 @@
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-primary">Crear página de runas</button>
                 </div>
+                </div>
+                </div>
             </form>
-        </div>
-    </div>
+        
 
 @endsection

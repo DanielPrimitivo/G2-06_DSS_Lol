@@ -11,12 +11,53 @@
 			</div>
 		</div>
 	</div>
+	<div class="littlespace"></div>
 	<div class="row justify-content-center">
 		<div class="col align-self-center">
 			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-				<h3>{{$runePage->name}}</h3>
+				<h2>{{$runePage->name}}</h2>
 			</div>
 		</div>
+	</div>
+	<div class="space"></div>
+	<div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+				<h3>{{$t1}}</h3>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center littlespace">
+		@foreach ($runesPrimary as $runePri)
+			<div class="col-lg-2 col-md-3 col-sm-4 col-5">
+				<div class="features-icons-item mb-5 mb-lg-0 mb-lg-3">
+				<a href="{{ route('rune.details', $runePri) }}" class="lin">
+					<div style="background: url('{{ $runePri->icon }}') no-repeat center center; background-size: cover" class="img2 d-flex"></div>
+						<h3>{{ $runePri->name}}</h3>
+				</a>
+				</div>
+			</div>
+		@endforeach
+	</div>
+	<div class="littlespace"></div>
+	<div class="row justify-content-center">
+		<div class="col align-self-center">
+			<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+				<h3>{{$t2}}</h3>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center littlespace">
+		@foreach ($runesSecundary as $runeSec)
+			<div class="col-lg-2 col-md-3 col-sm-4 col-5">
+				<div class="features-icons-item mb-5 mb-lg-0 mb-lg-3">
+				<a href="{{ route('rune.details', $runeSec) }}" class="lin">
+					<div style="background: url('{{ $runeSec->icon }}') no-repeat center center; background-size: cover" class="img2 d-flex"></div>
+						<h3>{{ $runeSec->name}}</h3>
+				</a>	
+				</div>
+			</div>
+		@endforeach
 	</div>
 
 @endsection
