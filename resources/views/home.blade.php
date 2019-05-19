@@ -48,7 +48,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('spells') }}" class="lin">
-			        <div class="img_rune d-flex"></div>
+			        <div class="img_spell d-flex"></div>
               <h3>Hechizos</h3>
             </a>
             <p class="lead mb-0">Se verá todos los hechizos e incluso una pequeña descripción para que no te pierdas</p>
@@ -60,7 +60,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('pagrunes') }}" class="lin">
-			        <div class="img_rune d-flex"></div>
+			        <div class="img_pagrunes d-flex"></div>
               <h3>Páginas de runas</h3>
             </a>
             <p class="lead mb-0">Se verá todas las páginas de runas e incluso una pequeña descripción para que no te pierdas</p>
@@ -72,7 +72,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>-->
             <a href="{{ route('builds') }}" class="lin">
-			        <div class="img_rune d-flex"></div>
+			        <div class="img_build d-flex"></div>
               <h3>Builds</h3>
             </a>
             <p class="lead mb-0">Se verá todas las builds e incluso una pequeña descripción para que no te pierdas</p>

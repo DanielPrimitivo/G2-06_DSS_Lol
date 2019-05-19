@@ -23,30 +23,18 @@
 	</div>
 
 	<div class="littlespace"></div>
-	
-	@foreach ($objects as $object)
-		<div class="row justify-content-center align-items-center">
-			<div class="col-lg-4 col-sm-6 col-12">
-				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<a href="{{ route('object.details',['object' => $object])}}">{{ $object->name }}</a>
+	<div class="row justify-content-center littlespace">
+		@foreach ($objects as $object)
+			<div class="col-lg-2 col-md-3 col-sm-4 col-5">
+				<div class="features-icons-item mb-5 mb-lg-0 mb-lg-3">
+					<a href="{{ route('object.details', $object) }}" class="lin">
+						<div style="background: url('{{ $object->icon }}') no-repeat center center; background-size: cover" class="img2 d-flex"></div>
+						<h3>{{ $object->name}}</h3>
+					</a>
 				</div>
 			</div>
-			<div class="col-lg-1 col-sm-2 col-3">
-				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<a href="{{ route('object.edit',['object' => $object])}}" class="btn btn-primary"> Editar</a>
-				</div>
-			</div>
-			<div class="col-lg-1 col-sm-2 col-3">
-				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<form action="{{ route('object.destroy', $object) }}" method="POST">
-						{{ method_field('DELETE') }}
-						{{ csrf_field() }}
-						<button type="submit" class="btn btn-danger">Eliminar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	@endforeach
+		@endforeach
+	</div>
 	
 	<div class="row justify-content-center align-items-center space">
 		<div class="col-4">

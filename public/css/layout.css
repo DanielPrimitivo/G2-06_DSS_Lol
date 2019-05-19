@@ -127,6 +127,33 @@ header.masthead h1 {
 	margin-bottom: 1rem;
 }
 
+.img_spell {
+	background: url("../img/hechizo.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
+.img_pagrunes {
+	background: url("../img/runas.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
+.img_build {
+	background: url("../img/mazo.png") no-repeat center center;
+	height: 20rem;
+	background-size: cover;
+	position: relative;
+	border: 0.5rem solid #bfbfbf;
+	margin-bottom: 1rem;
+}
+
 .img {
 	background: url("../img/bg-masthead.jpg") no-repeat center center;
 	height: 15rem;
