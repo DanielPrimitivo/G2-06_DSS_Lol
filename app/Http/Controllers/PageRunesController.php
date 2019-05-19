@@ -105,10 +105,8 @@ class PageRunesController extends Controller
         return RunePage::crear($data);
     }
 
-    public function edit(RunePage $pagrune, Request $request){
-        $t1 = $request->input('type1'); // Como se llame a lo que seleccione
-        $t2 = $request->input('type2'); // Como se llame a lo que seleccione
-        return RunePage::editarInfo($pagrune, $t1, $t2);
+    public function edit(RunePage $pagrune){
+        return RunePage::editarInfo($pagrune);
     }
 
     public function update(RunePage $pagrune){
