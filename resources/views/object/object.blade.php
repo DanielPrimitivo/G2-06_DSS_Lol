@@ -14,6 +14,8 @@
             <li>Subtipo: {{$object->subtype}}</li>
 	</ul>
 	<div class="littlespace"></div>
+	@guest
+	@else
 	<div class="row justify-content-center">
 		<div class="col-lg-1 col-sm-2 col-3">
 			<div class="features-icons-item mx-auto mb-2 mt-2">
@@ -30,4 +32,5 @@
 			</div>
 		</div>
 	</div>
+	@endguest
 @endsection
