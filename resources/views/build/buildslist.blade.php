@@ -24,29 +24,19 @@
 
 	<div class="littlespace"></div>
 	
-	@foreach ($builds as $build)
-		<div class="row justify-content-center align-items-center">
-			<div class="col-lg-4 col-sm-6 col-12">
-				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<a href="{{ route('build.details',['build' => $build])}}">{{ $build->name }}</a>
+	<div class="littlespace"></div>
+	<div class="row justify-content-center littlespace">
+		@foreach ($builds as $build)
+			<div class="col-lg-2 col-md-3 col-sm-4 col-5">
+				<div class="features-icons-item mb-5 mb-lg-0 mb-lg-3">
+					<a href="{{ route('build.details', $build) }}" class="lin">
+						<div style="background: url('{{ $build->icon }}') no-repeat center center; background-size: cover" class="img2 d-flex"></div>
+						<h3>{{ $build->name}}</h3>
+					</a>
 				</div>
 			</div>
-			<div class="col-lg-1 col-sm-2 col-3">
-				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<a href="{{ route('build.edit',['build' => $build])}}" class="btn btn-primary"> Editar</a>
-				</div>
-			</div>
-			<div class="col-lg-1 col-sm-2 col-3">
-				<div class="features-icons-item mx-auto mb-2 mt-2">
-					<form action="{{ route('build.destroy', $build) }}" method="POST">
-						{{ method_field('DELETE') }}
-						{{ csrf_field() }}
-						<button type="submit" class="btn btn-danger">Eliminar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	@endforeach
+		@endforeach
+	</div>
 	
 	<div class="row justify-content-center align-items-center space">
 		<div class="col-4">
