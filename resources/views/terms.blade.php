@@ -4,11 +4,11 @@
 
 @section('content')
 
-<div style= "text-align: justify" class="row justify-content-center">
-        <div class="col-lg-4">
+<div class="row justify-content-center">
+        <div class="col-lg-12">
           <h3>Condiciones de uso</h3>
         </div>
-        <div class="col-lg-4">
+        <div style= "text-align: justify" class="col-lg-12">
           <p>Se considera usuario del presente portal web cualquiera que acceda y lo utilice. La condición de usuario comporta la total aceptación de las condiciones establecidas en el presente Aviso Legal y en las especiales que puedan establecerse para determinados servicios y utilidades. Los usuarios adquieren el compromiso de ajustar su actuación a las mencionadas condiciones y a observar lo que se ha dispuesto por la normativa legal, así como las instrucciones y avisos que se ponen en su conocimiento.</p>
           <p>Cuando sea necesaria la utilización de una contraseña o nombre de usuario para acceder a algún contenido o servicio de este portal web, el usuario queda obligado a mantener en secreto y a hacer un uso diligente. En caso de pérdida o utilización negligente de la contraseña, el usuario responderá de la utilización que hayan podido realizar terceras personas.</p>
 

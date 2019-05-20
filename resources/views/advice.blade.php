@@ -4,11 +4,11 @@
 
 @section('content')
 
-	<div style= "text-align: justify" class="row justify-content-center">
-        <div class="col-lg-4">
+	<div  class="row justify-content-center">
+        <div class="col-lg-12">
           <h3>Aviso legal</h3>
         </div>
-        <div class="col-lg-4">
+        <div style= "text-align: justify" class="col-lg-12">
           <p>En cumplimiento de lo previsto en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, así como en otras normas de legal aplicación, se pone en conocimiento de los usuarios del Portal de Internet www.masterlol.es los siguientes datos de información general:</p>
           <br>
           <p>1. El presente portal constituye el Sitio Oficial en Internet del proyecto MasterLOL. Ha sido creado y es mantenido a instancias de la empresa "MasterLOL S.A.", quien es su propietaria, así como de aquellos nombres de dominio que a él conducen</p>
