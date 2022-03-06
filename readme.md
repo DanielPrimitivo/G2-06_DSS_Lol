@@ -1,7 +1,9 @@
 **Proyecto realizado con PHP/Laravel**
-<p>Daniel Primitivo</p>
-<p>Enrique Juan</p>
-<p>Francisco García</p>
+
+**Equipo:**
+- Daniel Primitivo
+- Enrique Juan
+- Francisco García
 
 
 ## GUÍA
